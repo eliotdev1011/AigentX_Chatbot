@@ -3,7 +3,7 @@ import CustomButton from './CustomButton';
 export default function SolidButtons () {
     return (
       <div className="bg-[#17191B] p-4 lg:p-10 rounded-xl flex flex-col gap-3 overflow-hidden">
-        <p className='font-medium text-white'>Solid</p>
+        <p className='font-medium text-white'>Opacity</p>
         <div className='grid grid-cols-2 gap-3 lg:grid-cols-5'>
             <CustomButton size = "normal" buttonName = "Default" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
             <CustomButton size = "normal" buttonName = "Hover" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
