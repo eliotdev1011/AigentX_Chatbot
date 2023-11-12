@@ -2,7 +2,7 @@ import CustomAlert from './CustomAlert';
 
 export default function Alerts () {
     return (
-      <div className="bg-[#17191B] p-0 lg:p-10 rounded-xl flex flex-col gap-3 overflow-hidden">
+      <div className="bg-[#17191B] p-4 lg:p-10 rounded-xl flex flex-col gap-3 overflow-hidden">
         <p className='font-medium text-white'>With icon</p>
         <CustomAlert type="1" alertType="home" title="An example alert with an icon" subtitle="" />
         <CustomAlert type="1" alertType="success" title="An example alert with an icon" subtitle="" />
