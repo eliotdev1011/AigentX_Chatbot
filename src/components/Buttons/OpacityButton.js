@@ -8,34 +8,34 @@ export default function SolidButtons () {
             <CustomButton size = "normal" buttonName = "Default" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
             <CustomButton size = "normal" buttonName = "Hover" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
             <CustomButton size = "normal" buttonName = "Pressed" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
-            <CustomButton size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
+            <CustomButton disabled = {1} size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
             <CustomButton size = "normal" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "loading" rightIcon = "none" />
         </div>
         <div className='grid grid-cols-2 gap-3 lg:grid-cols-5'>
             <CustomButton size = "normal" buttonName = "Default" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
             <CustomButton size = "normal" buttonName = "Hover" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "none" />
             <CustomButton size = "normal" buttonName = "Pressed" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "none" />
-            <CustomButton size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "none" />
+            <CustomButton disabled = {1} size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "none" />
             <CustomButton size = "normal" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "loading" rightIcon = "none" />
         </div>
         <div className='grid grid-cols-2 gap-3 lg:grid-cols-5'>
             <CustomButton size = "normal" buttonName = "Default" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
             <CustomButton size = "normal" buttonName = "Hover" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
             <CustomButton size = "normal" buttonName = "Pressed" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
-            <CustomButton size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
+            <CustomButton disabled = {1} size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
             <CustomButton size = "normal" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "loading" rightIcon = "none" />
         </div>
         <div className='grid grid-cols-2 gap-3 lg:grid-cols-5'>
             <CustomButton size = "normal" buttonName = "Default" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "arrow" />
             <CustomButton size = "normal" buttonName = "Hover" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "arrow" />
             <CustomButton size = "normal" buttonName = "Pressed" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "arrow" />
-            <CustomButton size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "arrow" />
+            <CustomButton disabled = {1} size = "normal" buttonName = "Disable" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "success" rightIcon = "arrow" />
             <CustomButton size = "normal" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "loading" rightIcon = "none" />
         </div>
         <div className='grid grid-cols-2 gap-3 lg:grid-cols-5'>
             <CustomButton size = "small" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
             <CustomButton size = "small" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
-            <CustomButton size = "small" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
+            <CustomButton disabled = {1} size = "small" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
             <CustomButton size = "small" buttonName = "" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "arrow" />
         </div>
       </div>
