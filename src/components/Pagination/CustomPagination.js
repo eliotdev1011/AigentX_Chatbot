@@ -12,7 +12,7 @@ export default function CustomPagination(props) {
         for(i = 1; i <= props.count; i ++) {
             tmp = [...tmp, (<a href='#' 
                 className={`text-white flex justify-center items-center rounded-xl 
-                    ${i == props.current && 'bg-gradient-to-r from-[#ED23FF] to-[#8E44FF]'} 
+                    ${i == props.current && 'bg-gradient-to-r from-[#ED23FF] to-[#8E44FF]'}
                     w-8 h-8 hover:bg-gradient-to-r hover:from-[#421C49] hover:to-[#2E2148]`}>{ i }</a>)];
             
             if(i >= 3)

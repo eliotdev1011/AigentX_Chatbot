@@ -17,6 +17,9 @@ import RadioButtons from './RadioButtons/RadionButtons';
 
 import SegmentControls from './SegmentControls/SegmentControls';
 import Pagination from './Pagination/Pagination';
+import BreadCrumb from './BreadCrumb/BreadCrumb';
+import Slider from './Slider/Slider';
+import Selects from './Select/Selects';
 
 function Landing () {
     return (
@@ -35,6 +38,9 @@ function Landing () {
             <RadioButtons />
             <SegmentControls />
             <Pagination />
+            <BreadCrumb />
+            <Slider />
+            <Selects />
           </div>
         </div>
       </div>
@@ -44,8 +50,5 @@ function Landing () {
 export default Landing;
 
 /*
-Side Controller
 Stroke Button
-Bread Crumb
-Dropdown
 */
