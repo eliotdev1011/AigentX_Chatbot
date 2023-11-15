@@ -8,7 +8,7 @@ export default function CustomButton (props) {
             className = {`justify-center relative flex flex-row items-center gap-1 rounded-xl 
                 ${props.size == 'normal' && 'w-[144px]'} 
                 ${props.size == 'small' && 'w-[42px]'} 
-                py-3 font-medium text-white hover:cursor-pointer bg-gradient-to-r 
+                py-2 font-medium text-white hover:cursor-pointer bg-gradient-to-r
                 ${props.bgFrom} ${props.bgTo}
                 ${props.type == "stroke" && "stroke-border text-transparent font-semibold bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] bg-clip-text"}
                 ${props.disabled ? 'opacity-50' : 'opacity-100'}`} >

@@ -48,7 +48,3 @@ function Landing () {
 }
 
 export default Landing;
-
-/*
-Stroke Button
-*/

@@ -1,6 +1,6 @@
-import { List } from '@mui/material';
 import './App.css';
 import Landing from './components/Landing';
+import AigentX from './components/AigentX';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing />}></Route>
+        <Route path='/aigentx' element={<AigentX />}></Route>
       </Routes>
     </BrowserRouter>
   );

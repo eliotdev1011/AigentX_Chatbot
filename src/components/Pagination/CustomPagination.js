@@ -3,7 +3,7 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
 export default function CustomPagination(props) {
     const [content, setContent] = useState([]);
-    
+
     useEffect(() => {
         let tmp = [], i;
 
