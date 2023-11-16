@@ -35,7 +35,7 @@ function EditGroups () {
                 ${i % 2 == 0 ? 'bg-[#FFFFFF0D]' : 'bg-transparent'}
                 rounded-xl flex flex-row p-4 py-5 hover:bg-[#393A4C]`}>
             <div className='flex flex-row items-center justify-center w-1/5 gap-1'>
-                <CustomCheckBox />
+                {/* <CustomCheckBox /> */}
                 {tableData[i][0]}
             </div>
             <div className='flex flex-row items-center justify-center w-1/5 gap-1'>
@@ -79,39 +79,39 @@ function EditGroups () {
                         <div className='flex justify-between mb-3'>
                             Company Ingoverhead
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder = "Detailed info about your project" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             Token Info
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder = "Token utility and tokenomics" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             Coin Gecko Info
                             <CustomSwitch checked = { true } disabled = { false }/>
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder = "https://www.coingecko.com/en/coins/aigentx" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             How To Buy
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder = "https://app.uniswap.org/swap" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             Dex Tools Link
                             <CustomSwitch checked = { false } disabled = { false }/>
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             Contacts
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder = "All project contract addresses and short description" />
                     </div>
                 </div>
                 <div className='mt-10 font-medium text-white border-[#393A4C] border p-1 py-2 rounded-xl'>
@@ -120,7 +120,7 @@ function EditGroups () {
                 <div className='w-full mt-10 overflow-auto text-white'>
                     <div className='w-[1200px]'>
                         <div class="bg-transparentrounded-xl flex flex-row p-4 py-5">
-                            <div className='flex flex-row justify-center w-1/5'><CustomCheckBox />Name</div>
+                            <div className='flex flex-row justify-center w-1/5'>Name</div>
                             <div className='w-1/5'>Type</div>
                             <div className='w-1/5'>Status</div>
                             <div className='w-1/5'>Size</div>

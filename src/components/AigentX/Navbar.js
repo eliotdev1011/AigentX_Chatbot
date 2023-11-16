@@ -39,12 +39,13 @@ export default function Navbar() {
                     <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-between">
                         {/* 1 */}
                         <div className="relative items-center justify-center flex-shrink-0 hidden lg:flex">
-                            <input className='rounded-xl py-[6px] px-2 pl-8 bg-[#393A3C]' placeholder='Search'></input>
-                            <FaSearch className='absolute w-[14px] h-[14px] text-[#88898A] -translate-y-1/2 top-1/2 left-2' />
+                            <img src = "../img/logo.png"></img>
+                            {/* <input className='rounded-xl py-[6px] px-2 pl-8 bg-[#393A3C]' placeholder='Search'></input>
+                            <FaSearch className='absolute w-[14px] h-[14px] text-[#88898A] -translate-y-1/2 top-1/2 left-2' /> */}
                         </div>
                         {/* 2 */}
                         <div className="hidden sm:ml-6 sm:block">
-                            <div className="flex space-x-4 text-[#7B7C7D]">
+                            {/* <div className="flex space-x-4 text-[#7B7C7D]">
                                 {navigation.map((item) => (
                                 <a
                                     key={item.name}
@@ -59,7 +60,7 @@ export default function Navbar() {
                                     {item.name}
                                 </a>
                                 ))}
-                            </div>
+                            </div> */}
                         </div>
                         {/* 3 */}
                         <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

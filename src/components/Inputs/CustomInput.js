@@ -10,7 +10,7 @@ export default function CustomInput (props) {
           className={`${props.disabled} w-full bg-transparent border-[#747576] 
             ${(props.type == "value" && props.result == "failed") && "border-[#ED1522]"} border rounded-xl p-2 
             ${props.type == "value" && 'pl-16'} ${props.icon && 'pl-8'} text-white
-            ${props.disabled ? 'opacity-50' : 'opacity-100'}`} placeholder="Placeholder"></input>
+            ${props.disabled ? 'opacity-50' : 'opacity-100'}`} placeholder={props.placeholder ? props.placeholder : "Placeholder"}></input>
         {props.icon == "home" && <FaHome className="absolute text-[#747576] top-3 left-[10px]"/>}
         {props.type == "value" && <p className={`absolute ${props.disabled ? "text-[#747576]" : "text-white"} top-[9px] left-3`}>Value</p>}
         {props.type == "password" && <p className="absolute text-white top-[14px] text-[10px] right-2">Forget Password?</p>}

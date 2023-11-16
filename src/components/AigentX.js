@@ -21,7 +21,7 @@ function AigentX () {
       tmp = [...tmp, (
         <div className='bg-transparent hover:bg-[#232527] rounded-xl flex flex-row p-4 py-5'>
           <div className='flex flex-row items-center justify-center w-1/3 gap-1'>
-            <CustomCheckBox />
+            {/* <CustomCheckBox /> */}
             <img src="img/bot_image.png" className='w-5 h-5'></img>
             Bot name
           </div>
