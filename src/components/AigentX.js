@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 
-function Landing () {
+function AigentX () {
    const [content, setContent] = useState([]);
 
    useEffect(() => {
@@ -60,4 +60,4 @@ function Landing () {
     );
 }
 
-export default Landing;
+export default AigentX;
