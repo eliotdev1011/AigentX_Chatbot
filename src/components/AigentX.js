@@ -45,7 +45,10 @@ function AigentX () {
               <div className='w-full mt-10 text-white'>
                 <div className='w-full'>
                   <div class="bg-[#232527] rounded-xl flex flex-row p-4 py-5">
-                    <div className='flex flex-row justify-center w-1/3'><CustomCheckBox />Group name</div>
+                    <div className='flex flex-row justify-center w-1/3'>
+                      {/* <CustomCheckBox /> */}
+                      Group name
+                    </div>
                     <div className='w-1/3'>Status</div>
                     <div className='w-1/3'>Action</div>
                   </div>

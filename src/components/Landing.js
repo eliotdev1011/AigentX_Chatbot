@@ -21,11 +21,14 @@ import BreadCrumb from './BreadCrumb/BreadCrumb';
 import Slider from './Slider/Slider';
 import Selects from './Select/Selects';
 
+import WebChat from './WebChat';
+
 function Landing () {
     return (
       <div className="App">
         <div className='relative flex justify-center w-full h-full body'>
           <div className='flex flex-col items-center gap-10 my-20'>
+            <WebChat />
             <Alerts />
             <SolidButtons />
             <OpacityButtons />
