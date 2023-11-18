@@ -5,6 +5,7 @@ import '../../css/animations.css';
 import Navbar from './Navbar';
 import CustomBreadCrumb from '../BreadCrumb/CustomBreadCrumb';
 import CustomPagination from '../Pagination/CustomPagination';
+import CustomComboBox from '../Select/CustomComboBox';
 import CustomCheckBox from '../CheckBoxs/CustomCheckBox';
 import CustomButton from '../Buttons/CustomButton';
 import CustomInput from '../Inputs/CustomInput';
@@ -77,15 +78,15 @@ function EditGroups () {
                 <div className='grid grid-cols-1 gap-5 mt-10 lg:grid-cols-2'>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
-                            Company Ingoverhead
+                            Company Informatino
                         </div>
                         <CustomInput placeholder = "Detailed info about your project" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
-                            Token Info
+                            How To Buy
                         </div>
-                        <CustomInput placeholder = "Token utility and tokenomics" />
+                        <CustomInput placeholder = "https://app.uniswap.org/swap" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
@@ -96,26 +97,46 @@ function EditGroups () {
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
-                            How To Buy
+                            Contacts
                         </div>
-                        <CustomInput placeholder = "https://app.uniswap.org/swap" />
+                        <CustomInput placeholder = "All project contract addresses and short description" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             Dex Tools Link
                             <CustomSwitch checked = { false } disabled = { false }/>
                         </div>
-                        <CustomInput placeholder = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3" />
+                        <CustomInput placeholder = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3" disabled={true}/>
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
-                            Contacts
+                            Auto Detection
                         </div>
-                        <CustomInput placeholder = "All project contract addresses and short description" />
+                        <CustomComboBox />
+                    </div>
+                    <div className='flex flex-col text-white'>
+                        <div className='flex justify-between mb-3'>
+                            Dex Screener
+                            <CustomSwitch checked = { false } disabled = { false }/>
+                        </div>
+                        <CustomInput placeholder = "https://dexscreener.com/ethereum/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3" disabled = {true} />
+                    </div>
+                    <div className='flex flex-col text-white'>
+                        <div className='flex justify-between mb-3'>
+                            Tone of Voice
+                        </div>
+                        <CustomComboBox />
+                    </div>
+                    <div className='flex flex-col text-white'>
+                        <div className='flex justify-between mb-3'>
+                            Token Info
+                        </div>
+                        <CustomInput placeholder = "Token utility and tokenomics" />
                     </div>
                 </div>
-                <div className='mt-10 font-medium text-white border-[#393A4C] border p-1 py-2 rounded-xl'>
+                <div className='mt-10 font-medium text-white border-[#393A4C] border items-center py-2 px-4 rounded-xl flex justify-between'>
                     Knowledge Base Management
+                    <button className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-1 px-3'>+</button>               
                 </div>
                 <div className='w-full mt-10 overflow-auto text-white'>
                     <div className='w-[1200px]'>

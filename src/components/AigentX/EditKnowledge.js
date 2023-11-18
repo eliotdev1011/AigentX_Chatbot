@@ -29,18 +29,24 @@ function EditKnowledge () {
                 <div className='flex flex-row items-center justify-center gap-2 font-medium text-white border-[#393A4C] border p-1 py-2 rounded-xl'>
                     KnowledgeBase Management
                 </div>
-                <div className='grid grid-cols-1 gap-5 mt-10 lg:grid-cols-2'>
+                <div className='grid grid-cols-1 gap-5 mt-10 lg:grid-cols-3'>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             Source Name
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder="Website" />
+                    </div>
+                    <div className='flex flex-col text-white'>
+                        <div className='flex justify-between mb-3'>
+                            Type
+                        </div>
+                        <CustomInput placeholder="Web" />
                     </div>
                     <div className='flex flex-col text-white'>
                         <div className='flex justify-between mb-3'>
                             Status
                         </div>
-                        <CustomInput />
+                        <CustomInput placeholder="Parsed 1 day ago" />
                     </div>
                 </div>
                 <div className='flex flex-col mt-10 text-white'>

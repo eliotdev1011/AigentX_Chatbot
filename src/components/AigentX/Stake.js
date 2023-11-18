@@ -15,9 +15,45 @@ import { FaCheck, FaEye, FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 
 function Stake () {
+    const [showModal, setShowModal] = useState(1);
+    
     return (
       <div className="App bg-[#17191B]">
         <Navbar />
+        {/* Modal */}
+        {showModal == 1 ? (<div className='fixed fadeIn left-0 top-0 w-full h-full bg-[#000000dd] z-[1]'>
+            <div className='relative flex flex-col items-center justify-center w-full h-full text-white'>
+                <div className='w-[400px] border border-gray-400 p-3 rounded-xl mx-4'>
+                    <div className='text-2xl font-medium'>Select Staking Option</div>
+                    <div className='flex flex-row justify-center gap-3 mt-10'>
+                        <div className='p-3 bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl font-medium cursor-pointer'>
+                            <div className='text-sm text-gray-300'>14 days Lockup</div>
+                            <div className='text-xl'>15% APR</div>
+                        </div>
+                        <div className='p-3 font-medium text-gray-900 bg-[#F3F3F3] rounded-xl cursor-pointer'>
+                            <div className='text-sm text-gray-500'>28 days Lockup</div>
+                            <div className='text-xl'>40% APR</div>
+                        </div>
+                        <div className='p-3 font-medium text-gray-900 bg-[#F3F3F3] rounded-xl cursor-pointer'>
+                            <div className='text-sm text-gray-500'>56 days Lockup</div>
+                            <div className='text-xl'>56% APR</div>
+                        </div>
+                    </div>
+                    <div className='flex flex-row justify-center gap-2 mt-5 text-xl font-medium'>
+                        $AIX Balance:
+                        <div className='text-purple-400'>0 $AIX</div>
+                    </div>
+                    <div className='flex items-center justify-center w-full mt-5'>
+                        <input className='px-5 py-1 text-white bg-transparent border border-gray-500 w-[300px] rounded-xl'></input>
+                    </div>
+                    <div className='mt-3'>You're staking: 0 $AIX tokens</div>
+                    <div className='flex flex-row justify-center gap-3 mt-7'>
+                        <button onClick={() => setShowModal(0)} className='py-1 bg-transparent border border-white px-14 rounded-xl'>Cancel</button>
+                        <button className='bg-[#ED1522] rounded-xl py-2 px-16 bg-gradient-to-r from-[#FB1FFF] to-[#8247FF]'>Stake</button>
+                    </div>
+                </div>
+            </div>
+        </div>) : null}
         <div className='flex items-center justify-center w-full px-3 body lg:px-0'>
           <div className='flex justify-start w-full max-w-7xl'>
             <div className='flex flex-col items-start w-full my-10'>
@@ -76,7 +112,7 @@ function Stake () {
                 <div className='flex flex-row items-center justify-center gap-2 p-1 py-2 mt-3 font-medium text-white rounded-xl'>
                     You have no staked $AIX
                 </div>
-                <button className='mt-10 bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3 text-white w-1/2 lg:w-1/5'>Stake Now</button>
+                <button onClick={() => setShowModal(1)} className='mt-10 bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3 text-white w-1/2 lg:w-1/5'>Stake Now</button>
                 <div className='flex flex-row items-center justify-center gap-2 p-1 py-2 mt-10 font-medium text-white rounded-xl'>
                     After Staking
                 </div>

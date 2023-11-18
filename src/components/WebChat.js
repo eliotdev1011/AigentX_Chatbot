@@ -18,6 +18,7 @@ import CustomInput from './Inputs/CustomInput';
 import CustomSwitch from './Switches/CustomSwitch';
 
 function WebChat () {
+    const [showModal, setShowModal] = useState(0);
     const [chatStart, setChatStart] = useState(0);
     const [curMsg ,setCurMsg] = useState('');
     const [msgDB, setMsgDB] = useState(["Hello, I'm Andrew, AI Agent 🤖. Let's optimize your business with AI! Write me in any language 🌍..."
@@ -93,6 +94,17 @@ function WebChat () {
 
     return (
         <div className="bg-[#252729] relative rounded-xl gap-5 flex flex-col overflow-hidden w-[400px] lg:w-[500px] h-[700px] border-gray-500 shadow-xl border-2">
+            {/* Modal */}
+            {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-[#000000bb] z-[1]'>
+                <div className='relative flex flex-col justify-center w-full h-full text-white'>
+                    <div className='text-xl text text-md'>You want to close chat room?</div>
+                    <div className='flex flex-row justify-center gap-3 mt-7'>
+                        <button onClick={() => setShowModal(0)} className='px-8 py-1 bg-transparent border border-white rounded-xl'>Cancel</button>
+                        <button className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-2 px-9'>Close</button>
+                    </div>
+                </div>
+            </div>) : null}
+
             {/* Navbar */}
             <div className='h-[77px] w-full p-2 items-center bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] flex justify-between'>
                 <div className='flex flex-row items-center gap-2 text-white'>
@@ -101,7 +113,7 @@ function WebChat () {
                 </div>
                 <div className='relative flex flex-row items-center gap-2 text-white'>
                     <MdMinimize className='absolute w-5 h-5 cursor-pointer right-6 top-[-4px]'/>
-                    <IoMdClose className='w-5 h-5 cursor-pointer'/>
+                    <IoMdClose className='w-5 h-5 cursor-pointer' onClick={() => setShowModal(1)} />
                 </div>
             </div>
 
