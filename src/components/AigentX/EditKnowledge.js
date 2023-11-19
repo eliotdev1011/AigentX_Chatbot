@@ -10,6 +10,8 @@ import CustomButton from '../Buttons/CustomButton';
 import CustomInput from '../Inputs/CustomInput';
 import CustomSwitch from '../Switches/CustomSwitch';
 
+import Sidebar from './Sidebar';
+
 import { useState, useEffect } from 'react';
 import { FaCheck, FaEye, FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
@@ -18,6 +20,8 @@ function EditKnowledge () {
     return (
       <div className="App bg-[#17191B]">
         <Navbar />
+        <Sidebar />
+
         <div className='flex items-center justify-center w-full px-3 body lg:px-0'>
           <div className='flex justify-start w-full max-w-7xl'>
             <div className='flex flex-col items-start w-full my-10'>
@@ -56,7 +60,7 @@ function EditKnowledge () {
                     <textarea rows="15" cols="60" name="text" placeholder="GET /knowledgeBaseEntity?scopeId=...&id=..." className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                 </div>
                 <div className='flex flex-row justify-center w-full gap-5 mt-10'>
-                    <CustomButton size = "normal" buttonName = "Cancel" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
+                    <a href='editgroups'><CustomButton size = "normal" buttonName = "Cancel" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" /></a>
                     <CustomButton size = "normal" buttonName = "Save" bgFrom = "from-[#ED23FF]" bgTo = "to-[#8E44FF]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
                 </div>
                 </div>

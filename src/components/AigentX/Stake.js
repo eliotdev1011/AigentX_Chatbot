@@ -10,6 +10,10 @@ import CustomButton from '../Buttons/CustomButton';
 import CustomInput from '../Inputs/CustomInput';
 import CustomSwitch from '../Switches/CustomSwitch';
 
+import Sidebar from './Sidebar';
+
+import { XMarkIcon } from '@heroicons/react/24/outline'
+
 import { useState, useEffect } from 'react';
 import { FaCheck, FaEye, FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
@@ -18,17 +22,19 @@ function Stake () {
     const [showModal, setShowModal] = useState(1);
     
     return (
-      <div className="App bg-[#17191B]">
+      <div className="App bg-[#17191B] body">
         <Navbar />
+        <Sidebar />
         {/* Modal */}
-        {showModal == 1 ? (<div className='fixed fadeIn left-0 top-0 w-full h-full bg-[#000000dd] z-[1]'>
+        {showModal == 1 ? (<div className='fixed fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
             <div className='relative flex flex-col items-center justify-center w-full h-full text-white'>
-                <div className='w-[400px] border border-gray-400 p-3 rounded-xl mx-4'>
-                    <div className='text-2xl font-medium'>Select Staking Option</div>
-                    <div className='flex flex-row justify-center gap-3 mt-10'>
+                <div className='relative w-full mx-8 sm:w-[540px] bg-white text-gray-900 p-3 py-10 rounded-xl'>
+                    <XMarkIcon onClick={() => setShowModal(0)} className='absolute w-5 h-5 text-gray-900 cursor-pointer top-3 right-3'/>
+                    <div className='text-2xl font-bold'>Select Staking Option</div>
+                    <div className='flex flex-col justify-center gap-3 mt-10 lg:flex-row'>
                         <div className='p-3 bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl font-medium cursor-pointer'>
                             <div className='text-sm text-gray-300'>14 days Lockup</div>
-                            <div className='text-xl'>15% APR</div>
+                            <div className='text-xl text-white'>15% APR</div>
                         </div>
                         <div className='p-3 font-medium text-gray-900 bg-[#F3F3F3] rounded-xl cursor-pointer'>
                             <div className='text-sm text-gray-500'>28 days Lockup</div>
@@ -39,17 +45,16 @@ function Stake () {
                             <div className='text-xl'>56% APR</div>
                         </div>
                     </div>
-                    <div className='flex flex-row justify-center gap-2 mt-5 text-xl font-medium'>
+                    <div className='flex flex-row justify-center gap-2 mt-5 font-medium text-md'>
                         $AIX Balance:
                         <div className='text-purple-400'>0 $AIX</div>
                     </div>
                     <div className='flex items-center justify-center w-full mt-5'>
-                        <input className='px-5 py-1 text-white bg-transparent border border-gray-500 w-[300px] rounded-xl'></input>
+                        <input className='px-5 py-2 bg-transparent border border-gray-500 w-[300px] rounded-xl'></input>
                     </div>
-                    <div className='mt-3'>You're staking: 0 $AIX tokens</div>
+                    <div className='mt-5 font-semibold'>You're staking: 0 $AIX tokens</div>
                     <div className='flex flex-row justify-center gap-3 mt-7'>
-                        <button onClick={() => setShowModal(0)} className='py-1 bg-transparent border border-white px-14 rounded-xl'>Cancel</button>
-                        <button className='bg-[#ED1522] rounded-xl py-2 px-16 bg-gradient-to-r from-[#FB1FFF] to-[#8247FF]'>Stake</button>
+                        <button className='bg-[#ED1522] rounded-xl py-2 px-16 w-full lg:w-2/3 bg-gradient-to-r from-[#FB1FFF] to-[#8247FF] text-white' >Stake</button>
                     </div>
                 </div>
             </div>
@@ -78,7 +83,7 @@ function Stake () {
                             <p>15% APR</p>
                             <p className=''>0 $AIX/0%</p> 
                         </div>
-                        <button className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3'>Stake Now</button>
+                        <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3'>Stake Now</button>
                     </div>
                     <div className='flex flex-col p-5 text-white border border-[#FFFFFF33] rounded-xl'>
                         <div className='flex justify-between mb-6'>
@@ -89,14 +94,14 @@ function Stake () {
                             <p>40% APR</p>
                             <p className=''>0 $AIX/0%</p> 
                         </div>
-                        <button className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3'>Stake Now</button>
+                        <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3'>Stake Now</button>
                     </div>
                     <div className='flex flex-col p-5 text-white border border-[#FFFFFF33] rounded-xl'>
                         <div className='flex justify-between mb-6'>
                             <p>56 Days</p>
                             <p className='text-gray-500'>86% ETH Rewards Share</p> 
                         </div>
-                        <div className='flex justify-between mb-3'>
+                        <div onClick={() => setShowModal(1)} className='flex justify-between mb-3'>
                             <p>60% APR</p>
                             <p className=''>0 $AIX/0%</p> 
                         </div>

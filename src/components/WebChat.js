@@ -95,7 +95,7 @@ function WebChat () {
     return (
         <div className="bg-[#252729] relative rounded-xl gap-5 flex flex-col overflow-hidden w-[400px] lg:w-[500px] h-[700px] border-gray-500 shadow-xl border-2">
             {/* Modal */}
-            {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-[#000000bb] z-[1]'>
+            {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
                 <div className='relative flex flex-col justify-center w-full h-full text-white'>
                     <div className='text-xl text text-md'>You want to close chat room?</div>
                     <div className='flex flex-row justify-center gap-3 mt-7'>

@@ -3,22 +3,17 @@ import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { IoCaretDownOutline } from 'react-icons/io5';
 
-const myItem = [
-  { id: 1, name: 'Item1' },
-  { id: 2, name: 'Item2' },
-  { id: 3, name: 'Item3' },
-  { id: 4, name: 'Item4' },
-  { id: 5, name: 'Item5' },
-]
+export default function CustomComboBox(props) {
+  console.log('----------------------------');
+  console.log(props.myItem);
 
-export default function CustomComboBox() {
-  const [selected, setSelected] = useState(myItem[0])
+  const [selected, setSelected] = useState(props.myItem[0])
   const [query, setQuery] = useState('')
 
   const filteredmyItem =
     query === ''
-      ? myItem
-      : myItem.filter((boxItem) =>
+      ? props.myItem
+      : props.myItem.filter((boxItem) =>
           boxItem.name
             .toLowerCase()
             .replace(/\s+/g, '')
@@ -31,7 +26,7 @@ export default function CustomComboBox() {
         <div className="relative mt-1">
           <div className="relative w-full overflow-hidden text-left rounded-lg shadow-md cursor-default border-[#747576] border focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
-              className="w-full py-2 pl-3 pr-10 text-sm leading-5 text-white bg-transparent"
+              className="w-full py-2 pl-3 pr-10 text-sm leading-5 bg-transparent"
               displayValue={(boxItem) => boxItem.name}
               onChange={(event) => setQuery(event.target.value)}
             />

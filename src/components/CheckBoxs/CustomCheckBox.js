@@ -11,7 +11,7 @@ export default function CustomCheckBox(props) {
           ${props.checked ? 'bg-gradient-to-r from-[#ED23FF] to-[#8E44FF]' : 'bg-transparent border border-[#747576]'}`}>
         {props.checked ? <FaCheck className='absolute left-0 w-full h-full p-[4px] text-white t-0'/> : null}
       </div>
-      <div className="text-left text-white">{props.label}</div>
+      <div className="text-left">{props.label}</div>
     </div>
   )
 }
