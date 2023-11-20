@@ -9,7 +9,7 @@ export default function Slider () {
         <MultiRangeSlider
             min={0}
             max={100}
-            onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+            onChange={({ min, max }) => {}}
         />
       </div>
     );

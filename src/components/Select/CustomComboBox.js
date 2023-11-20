@@ -4,9 +4,6 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { IoCaretDownOutline } from 'react-icons/io5';
 
 export default function CustomComboBox(props) {
-  console.log('----------------------------');
-  console.log(props.myItem);
-
   const [selected, setSelected] = useState(props.myItem[0])
   const [query, setQuery] = useState('')
 

@@ -170,7 +170,7 @@ function EditGroups () {
                 </div>
                 <div className='w-full mt-10 overflow-auto text-white'>
                     <div className='w-[1200px]'>
-                        <div class="bg-transparentrounded-xl flex flex-row p-4 py-5">
+                        <div className="flex flex-row p-4 py-5 bg-transparentrounded-xl">
                             <div className='flex flex-row justify-center w-1/5'>Name</div>
                             <div className='w-1/5'>Type</div>
                             <div className='w-1/5'>Status</div>

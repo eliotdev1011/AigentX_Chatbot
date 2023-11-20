@@ -78,7 +78,7 @@ function AigentX () {
                 <div className='font-medium text-white text-md lg:text-xl'>All bots</div>
                 <div className='w-full mt-10 text-white'>
                   <div className='w-full'>
-                    <div class="bg-[#232527] rounded-xl flex flex-row p-4 py-5">
+                    <div className="bg-[#232527] rounded-xl flex flex-row p-4 py-5">
                       <div className='flex flex-row justify-center w-1/3'>
                         {/* <CustomCheckBox /> */}
                         Group name

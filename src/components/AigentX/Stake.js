@@ -123,14 +123,14 @@ function Stake () {
                 </div>
                 <div className='w-full mt-10 overflow-auto text-white'>
                     <div className='w-[1200px]'>
-                        <div class="bg-transparent rounded-xl flex flex-row p-3">
+                        <div className="flex flex-row p-3 bg-transparent rounded-xl">
                             <div className='flex flex-row justify-center w-1/5'>15% APR</div>
                             <div className='w-1/5'>1 $AIX</div>
                             <div className='w-1/5'>0 ETH</div>
                             <div className='w-1/5'>0 $AIX</div>
                             <div className='w-1/5'>13D 23H 59M 49S</div>
                         </div>
-                        <div class="bg-transparent rounded-xl flex flex-row p-3 text-gray-500">
+                        <div className="flex flex-row p-3 text-gray-500 bg-transparent rounded-xl">
                             <div className='flex flex-row justify-center w-1/5'>14 Days Lockup</div>
                             <div className='w-1/5'>Staked</div>
                             <div className='w-1/5'>Unclaimed ETH</div>

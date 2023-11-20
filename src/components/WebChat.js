@@ -4,81 +4,109 @@ import '../css/animations.css';
 
 import { MdMinimize } from 'react-icons/md';
 import { IoMdClose } from 'react-icons/io';
-import { FaTruckLoading, FaTelegramPlane } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { FaTelegramPlane } from 'react-icons/fa';
+import { useState, useEffect, useRef } from 'react';
 
 import axios from 'axios';
 import OpenAI from 'openai';
 
-import CustomBreadCrumb from './BreadCrumb/CustomBreadCrumb';
-import CustomPagination from './Pagination/CustomPagination';
-import CustomCheckBox from './CheckBoxs/CustomCheckBox';
-import CustomButton from './Buttons/CustomButton';
-import CustomInput from './Inputs/CustomInput';
-import CustomSwitch from './Switches/CustomSwitch';
-
 function WebChat () {
     const [showModal, setShowModal] = useState(0);
-    const [chatStart, setChatStart] = useState(0);
     const [curMsg ,setCurMsg] = useState('');
-    const [msgDB, setMsgDB] = useState(["Hello, I'm Andrew, AI Agent 🤖. Let's optimize your business with AI! Write me in any language 🌍..."
-        , "Offers a range of AI solutions that can help optimize and streamline your business processes. Here are some key benefits and services we provide:"]);
+    const divRef = useRef(null);
+
+    const initialDB = [{userId:"ai", data: "Hello, I'm Andrew, AI Agent 🤖. Let's optimize your business with AI! Write me in any language 🌍..."},
+    {userId:"user", data:"Offers a range of AI solutions that can help optimize and streamline your business processes. Here are some key benefits and services we provide:"}];
+
+    const [msgDB, setMsgDB] = useState(initialDB);
     const [content, setContent] = useState('');
 
     const handleInputChange = (event) => {
         setCurMsg(event.target.value);
     };
+    
+    const sendMessage = () => {        
+        if(curMsg != '' && msgDB[msgDB.length - 1].userId == "ai") {
+            setCurMsg('');
+
+            axios.post('https://eros-ai.cloud:2053/handle_tasks', {"scope_id":"7700057","secret":"35e26211fa1d4746bc814f9cb2a478b8","user_id":"fc0c0d0c5eae931bdf5f92803ca73fab","user_message":curMsg,"channel":"webchat","username":"fc0c0d0c5eae931bdf5f92803ca73fab","steps":[{"field":"answer","input_getter":"getter_prompt","input_getter_kwargs":{"prompt_var":"ASSISTANT_PROMPT"},"no_hallucinations":true}]})
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+            if (divRef.current) {
+                divRef.current.scrollTop = divRef.current.scrollHeight;
+            }
+        }
+        
+        // const result = await getOpenAIResponse("Hello, how are you?");
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          sendMessage();
+        }
+    };
+
+    useEffect(() => {
+        updateDB();
+        
+        const intervalId = setInterval(() => {
+            updateDB();
+        }, 1000);
+      
+        return () => {
+          clearInterval(intervalId);
+        };
+    }, []);  
+
+    const updateDB = () => {        
+        axios.post('https://eros-ai.cloud:2053/conversation_history', { user_id: "fc0c0d0c5eae931bdf5f92803ca73fab" })
+            .then((response) => {
+                let tmp = [];
+    
+                for(let i = 0; i < response.data.conversation.length; i ++) {
+                    tmp[tmp.length] = {userId: "", data: ""};
+                    tmp[tmp.length - 1].userId = response.data.conversation[i].user_id;
+                    tmp[tmp.length - 1].data = response.data.conversation[i].content;
+                }
+
+                if([...initialDB, ...tmp] != msgDB)
+                    setMsgDB([...initialDB, ...tmp]);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 
     async function getOpenAIResponse(promptContent) {
         const openai = new OpenAI({
             apiKey: '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',
             dangerouslyAllowBrowser: true 
         });
-
-        console.log('==========start===========');
-        console.log(promptContent);
           
         const response = await openai.chat.completions.create({
             messages: [{ role: 'user', content: promptContent }],
             model: 'gpt-3.5-turbo',
         });
-
-        console.log("==========end==============");
-        console.log(response);
       
         return response.data.choices[0].text;
     }
 
-    const sendMessage = async () => {
-        console.log('-----------Message DB--------------');
-        console.log(msgDB);
-
-        if(curMsg != '' && msgDB[msgDB.length - 1] != "Loading") {
-            setMsgDB([...msgDB, curMsg, "Loading"]);
-            setCurMsg('');
-        }
-        
-        const result = await getOpenAIResponse("Hello, how are you?");
-    }
-
     useEffect(() => {
         var tmp = [];
-
+    
         for(let i = 0; i < msgDB.length; i ++){
-            if(i % 2 == 0) {
+            if(msgDB[i].userId == "ai") {
                 tmp = [...tmp, (
-                    <div className='relative flex flex-row gap-1 mt-10 text-white'>
+                    <div className='relative flex flex-row gap-1 mt-5 text-white'>
                         <img src="img/webchat_logo.png" className='w-9 h-9'></img>
                         <div className='absolute p-1 bg-white rounded-full top-[25px] left-[25px] bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] border border-white'></div>
-                        <div className='p-2 bg-[#FFFFFF1A] max-w-sm rounded-xl'>{msgDB[i]}</div>
-                    </div>
-                )];
-            }
-            else {
-                tmp = [...tmp, (
-                    <div className='flex flex-row justify-end gap-3 mt-5 text-white right-3'>
                         <div className='p-2 bg-[#FFFFFF1A] max-w-sm rounded-xl'>
-                            {msgDB[i] != "Loading" ? msgDB[i] : (
+                            {msgDB[i].data != "Loading" ? msgDB[i].data : (
                                 <button className="buttonload">
                                     <i className="fa fa-spinner fa-spin"></i> Waiting for Genie
                                 </button>
@@ -87,7 +115,29 @@ function WebChat () {
                     </div>
                 )];
             }
+            else {
+                tmp = [...tmp, (
+                    <div className='flex flex-row justify-end gap-3 mt-5 text-white right-3'>
+                        <div className='p-2 bg-[#FFFFFF1A] max-w-sm rounded-xl'>
+                            {msgDB[i].data}
+                        </div>
+                    </div>
+                )];
+            }
         }
+
+        if(msgDB[msgDB.length - 1].userId != "ai")
+            tmp = [...tmp, (
+                <div className='relative flex flex-row gap-1 mt-5 text-white'>
+                <img src="img/webchat_logo.png" className='w-9 h-9'></img>
+                <div className='absolute p-1 bg-white rounded-full top-[25px] left-[25px] bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] border border-white'></div>
+                <div className='p-2 bg-[#FFFFFF1A] max-w-sm rounded-xl'>
+                    <button className="buttonload">
+                        <i className="fa fa-spinner fa-spin"></i> Waiting for Genie
+                    </button>
+                </div>
+                </div>
+            )];
 
         setContent(tmp);
     }, [msgDB]);
@@ -118,18 +168,19 @@ function WebChat () {
             </div>
 
             {/* Main Chat */}
-            <div className='w-full h-[460px] overflow-auto relative px-2'>
+            <div ref={divRef} className='w-full h-[460px] overflow-y-auto relative px-2'>
                 <div className='flex flex-col items-center mt-5 text-white'>
                     <img src='img/chat_logo.png' className='w-20 h-20'></img>
                     <div className='text-2xl mt-7'>Integrately AI Agent</div>
                     <div className='mt-3 text-md'>I'm here to help you</div>
                 </div>  
                 {content}
+                {/* <div ref={bottomRef} /> */}
             </div>    
             
             {/* Message Input */}
             <div className='absolute bottom-0 left-0 p-4 w-full border-t border-[#FFFFFF1A] gap-3 flex flex-row justify-center'>
-                <input type="text" value={curMsg} onChange={handleInputChange} placeholder='Message' className='bg-transparent border border-[#FFFFFF1A] p-2 rounded-xl w-[330px] text-white'></input>
+                <input onKeyDown={handleKeyDown} type="text" value={curMsg} onChange={handleInputChange} placeholder='Message' className='bg-transparent border border-[#FFFFFF1A] p-2 rounded-xl w-[330px] text-white'></input>
                 <button onClick = {sendMessage} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] px-3 text-white rounded-xl'><FaTelegramPlane className='w-5 h-5' /></button>
             </div>
         </div> 
