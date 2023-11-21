@@ -2,9 +2,9 @@ import * as React from 'react'
 import '../css/aix_base.css'
 import '../css/animations.css';
 
-import { MdMinimize } from 'react-icons/md';
+import { MdMinimize, MdViewSidebar } from 'react-icons/md';
 import { IoMdClose } from 'react-icons/io';
-import { FaTelegramPlane } from 'react-icons/fa';
+import { FaOldRepublic, FaTelegramPlane } from 'react-icons/fa';
 import { useState, useEffect, useRef } from 'react';
 
 import axios from 'axios';
@@ -27,7 +27,7 @@ function WebChat () {
     };
     
     const sendMessage = () => {        
-        if(curMsg != '' && msgDB[msgDB.length - 1].userId == "ai") {  
+        if(curMsg != '') {  //  && msgDB[msgDB.length - 1].userId == "ai"  
             setCurMsg('');
 
             axios.post('https://eros-ai.cloud:2053/handle_tasks', {"scope_id":"7700057","secret":"35e26211fa1d4746bc814f9cb2a478b8","user_id": UserId,"user_message":curMsg,"channel":"webchat","username": UserId,"steps":[{"field":"answer","input_getter":"getter_prompt","input_getter_kwargs":{"prompt_var":"ASSISTANT_PROMPT"},"no_hallucinations":true}]})
