@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { FaCoins, FaCheck, FaEye, FaEdit } from 'react-icons/fa';
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { RiArrowRightSLine } from 'react-icons/ri';
 import { IoDocumentText } from 'react-icons/io5';
 import { FaBucket } from 'react-icons/fa6';
 import { AiFillControl } from 'react-icons/ai';
@@ -13,7 +13,7 @@ export default function Sidebar() {
 
   return (
     <div>
-        <button className='fixed p-1 text-white border border-gray-400 rounded-full lg:p-2 right-3 lg:right-10 top-1/2' onClick={() => {setOpen(true)}}><RiArrowLeftSLine className='w-5 h-5 text-white'/></button>
+        <button className='fixed p-1 text-white border border-gray-400 rounded-full lg:p-2 left-3 lg:left-10 top-1/2' onClick={() => {setOpen(true)}}><RiArrowRightSLine className='w-5 h-5 text-white'/></button>
         <Transition.Root show={open} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={setOpen}>
             <Transition.Child
@@ -30,15 +30,15 @@ export default function Sidebar() {
 
             <div className="fixed inset-0 overflow-hidden">
               <div className="absolute inset-0 overflow-hidden">
-                <div className="fixed inset-y-0 right-0 flex max-w-full pl-10 pointer-events-none">
+                <div className="fixed inset-y-0 left-0 flex max-w-full pointer-events-none">
                   <Transition.Child
                     as={Fragment}
                     enter="transform transition ease-in-out duration-500 sm:duration-700"
-                    enterFrom="translate-x-full"
+                    enterFrom="translate-x-[-400px]"
                     enterTo="translate-x-0"
                     leave="transform transition ease-in-out duration-500 sm:duration-700"
                     leaveFrom="translate-x-0"
-                    leaveTo="translate-x-full"
+                    leaveTo="translate-x-[-400px]"
                   >
                     <Dialog.Panel className="relative w-screen max-w-md pointer-events-auto">
                       <Transition.Child
@@ -50,7 +50,7 @@ export default function Sidebar() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                       >
-                        <div className="absolute top-0 left-0 flex pt-4 pr-2 -ml-8 sm:-ml-10 sm:pr-4">
+                        <div className="absolute top-0 right-[-50px] flex pt-4 pr-2 -ml-8 sm:-ml-10 sm:pr-4">
                           <button
                             type="button"
                             className="relative text-gray-300 rounded-md hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
@@ -62,7 +62,7 @@ export default function Sidebar() {
                           </button>
                         </div>
                       </Transition.Child>
-                      <div className="flex flex-col h-full py-6 overflow-y-scroll bg-[#17191B] shadow-xl">
+                      <div className="flex flex-col h-full py-6 overflow-y-hidden bg-[#17191B] shadow-xl">
                         <div className="px-4 sm:px-6">
                           <Dialog.Title className="mt-10 text-base font-semibold leading-6 text-gray-300">
                             <div className='flex flex-col gap-5 text-center'>

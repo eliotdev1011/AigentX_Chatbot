@@ -83,7 +83,7 @@ function Stake () {
                             <p>15% APR</p>
                             <p className=''>0 $AIX/0%</p> 
                         </div>
-                        <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3'>Stake Now</button>
+                        <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] font-medium rounded-xl p-3'>Stake Now</button>
                     </div>
                     <div className='flex flex-col p-5 text-white border border-[#FFFFFF33] rounded-xl'>
                         <div className='flex justify-between mb-6'>
@@ -94,7 +94,7 @@ function Stake () {
                             <p>40% APR</p>
                             <p className=''>0 $AIX/0%</p> 
                         </div>
-                        <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3'>Stake Now</button>
+                        <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] font-medium rounded-xl p-3'>Stake Now</button>
                     </div>
                     <div className='flex flex-col p-5 text-white border border-[#FFFFFF33] rounded-xl'>
                         <div className='flex justify-between mb-6'>
@@ -105,7 +105,7 @@ function Stake () {
                             <p>60% APR</p>
                             <p className=''>0 $AIX/0%</p> 
                         </div>
-                        <button className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3'>Stake Now</button>
+                        <button className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] font-medium rounded-xl p-3'>Stake Now</button>
                     </div>
                 </div>
               </div>
@@ -117,7 +117,7 @@ function Stake () {
                 <div className='flex flex-row items-center justify-center gap-2 p-1 py-2 mt-3 font-medium text-white rounded-xl'>
                     You have no staked $AIX
                 </div>
-                <button onClick={() => setShowModal(1)} className='mt-10 bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl p-3 text-white w-1/2 lg:w-1/5'>Stake Now</button>
+                <button onClick={() => setShowModal(1)} className='mt-10 bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] font-medium rounded-xl p-3 text-white w-1/2 lg:w-1/5'>Stake Now</button>
                 <div className='flex flex-row items-center justify-center gap-2 p-1 py-2 mt-10 font-medium text-white rounded-xl'>
                     After Staking
                 </div>
