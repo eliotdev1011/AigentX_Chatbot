@@ -13,6 +13,7 @@ import OpenAI from 'openai';
 function WebChat () {
     const [showModal, setShowModal] = useState(0);
     const [curMsg ,setCurMsg] = useState('');
+    const [UserId, setUserId] = useState("");
     const divRef = useRef(null);
 
     const initialDB = [{userId:"ai", data: "Hello, I'm Andrew, AI Agent 🤖. Let's optimize your business with AI! Write me in any language 🌍..."},
@@ -26,10 +27,10 @@ function WebChat () {
     };
     
     const sendMessage = () => {        
-        if(curMsg != '' && msgDB[msgDB.length - 1].userId == "ai") {
+        if(curMsg != '' && msgDB[msgDB.length - 1].userId == "ai") {  
             setCurMsg('');
 
-            axios.post('https://eros-ai.cloud:2053/handle_tasks', {"scope_id":"7700057","secret":"35e26211fa1d4746bc814f9cb2a478b8","user_id":"fc0c0d0c5eae931bdf5f92803ca73fab","user_message":curMsg,"channel":"webchat","username":"fc0c0d0c5eae931bdf5f92803ca73fab","steps":[{"field":"answer","input_getter":"getter_prompt","input_getter_kwargs":{"prompt_var":"ASSISTANT_PROMPT"},"no_hallucinations":true}]})
+            axios.post('https://eros-ai.cloud:2053/handle_tasks', {"scope_id":"7700057","secret":"35e26211fa1d4746bc814f9cb2a478b8","user_id": UserId,"user_message":curMsg,"channel":"webchat","username": UserId,"steps":[{"field":"answer","input_getter":"getter_prompt","input_getter_kwargs":{"prompt_var":"ASSISTANT_PROMPT"},"no_hallucinations":true}]})
             .then((response) => {
                 console.log(response);
             })
@@ -52,6 +53,27 @@ function WebChat () {
     };
 
     useEffect(() => {
+        const generateUniqueID = () => {
+          return Array(32).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+        }
+
+        const storageKey = "myUserId";
+    
+        let storedUserId = localStorage.getItem(storageKey);
+
+        console.log('-----UserId-----');
+        console.log(storedUserId);
+
+        if (!storedUserId) {
+          storedUserId = generateUniqueID();
+
+          localStorage.setItem(storageKey, storedUserId);
+        }
+    
+        setUserId(storedUserId);
+    }, []);
+
+    useEffect(() => {
         updateDB();
         
         const intervalId = setInterval(() => {
@@ -63,11 +85,11 @@ function WebChat () {
         };
     }, []);  
 
-    const updateDB = () => {        
-        axios.post('https://eros-ai.cloud:2053/conversation_history', { user_id: "fc0c0d0c5eae931bdf5f92803ca73fab" })
+    const updateDB = () => { 
+        axios.post('https://eros-ai.cloud:2053/conversation_history', { user_id: localStorage.getItem("myUserId") })
             .then((response) => {
                 let tmp = [];
-    
+                
                 for(let i = 0; i < response.data.conversation.length; i ++) {
                     tmp[tmp.length] = {userId: "", data: ""};
                     tmp[tmp.length - 1].userId = response.data.conversation[i].user_id;
@@ -143,7 +165,7 @@ function WebChat () {
     }, [msgDB]);
 
     return (
-        <div className="bg-[#252729] relative rounded-xl gap-5 flex flex-col overflow-hidden w-[400px] lg:w-[500px] h-[700px] border-gray-500 shadow-xl border-2">
+        <div className="bg-[#252729] relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-[400px] lg:w-[500px] h-[700px] border-gray-500 shadow-xl border-2">
             {/* Modal */}
             {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
                 <div className='relative flex flex-col justify-center w-full h-full text-white'>

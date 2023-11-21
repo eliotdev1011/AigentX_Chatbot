@@ -1,8 +1,12 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { FaCheck, FaEye, FaEdit } from 'react-icons/fa';
+import { FaCoins, FaCheck, FaEye, FaEdit } from 'react-icons/fa';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { IoDocumentText } from 'react-icons/io5';
+import { FaBucket } from 'react-icons/fa6';
+import { AiFillControl } from 'react-icons/ai';
+import { GiPapers } from 'react-icons/gi';
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false)
@@ -60,28 +64,28 @@ export default function Sidebar() {
                       </Transition.Child>
                       <div className="flex flex-col h-full py-6 overflow-y-scroll bg-[#17191B] shadow-xl">
                         <div className="px-4 sm:px-6">
-                          <Dialog.Title className="mt-10 text-base font-semibold leading-6 text-gray-400">
+                          <Dialog.Title className="mt-10 text-base font-semibold leading-6 text-gray-300">
                             <div className='flex flex-col gap-5 text-center'>
                               <div className='flex flex-row items-center justify-center gap-3 py-2 border border-gray-600 cursor-pointer rounded-xl'>
-                                <FaCheck />
+                                <AiFillControl />
                                 <a href="/aigentx">Bot Dashboard</a>
                                 <div className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-full w-[25px] text-white'>2</div>
                               </div>
-                              <div className='flex flex-row items-center justify-center gap-3 py-2 text-gray-700 border border-gray-600 cursor-pointer rounded-xl'>
-                                <FaCheck />
+                              <div className='flex flex-row items-center justify-center gap-3 py-2 text-gray-600 border border-gray-600 cursor-pointer rounded-xl'>
+                                <FaBucket />
                                 Payments
                                 <div className='text-gray-900 bg-[#FFFFFF33] rounded-xl px-2'>Soon</div>
                               </div>
-                              <div className='flex flex-row items-center justify-center gap-3 py-2 text-white border border-gray-600 cursor-pointer rounded-xl'>
-                                <FaCheck />
+                              <div className='flex flex-row items-center justify-center gap-3 py-2 border border-gray-600 cursor-pointer rounded-xl'>
+                                <GiPapers />
                                 <a href="/aigentx/stake">RevSharing Staking</a>                  
                               </div>
                               <div className='flex flex-row items-center justify-center gap-3 py-2 border border-gray-600 cursor-pointer rounded-xl'>
-                                <FaCheck />
+                                <IoDocumentText />
                                 Docs
                               </div>
                               <div className='flex flex-row items-center justify-center gap-3 py-2 border border-gray-600 cursor-pointer rounded-xl'>
-                                <FaCheck />
+                                <FaCoins />
                                 Buy
                               </div>
                             </div>
