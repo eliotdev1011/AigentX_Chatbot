@@ -176,7 +176,7 @@ function WebChat () {
     }, [msgDB]);
 
     return (
-        <div className={`${isClosed == 0 ? "bg-[#252729] shadow-xl" : "bg-transparent border-none shadow-none"} relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-[400px] lg:w-[500px] h-[700px] border-gray-500 border-2`}>
+        <div className={`${isClosed == 0 ? "bg-[#252729] shadow-xl" : "bg-transparent border-none shadow-none"} relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-full lg:w-[500px] h-[700px] border-gray-500 border-2`}>
             {/* Modal */}
             {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
                 <div className='relative flex flex-col justify-center w-full h-full text-white'>
