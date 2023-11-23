@@ -1,6 +1,32 @@
 .body {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat' !important;
 }
+
+.webchat {
+    text-align: left !important;
+
+}
+
+.gradient_button {
+    background: linear-gradient(to right, #ED23FF, #8E44FF) !important;
+}
+
+.outline_button {
+    background-color: transparent !important;
+    border: 1px solid #fff !important;
+}
+
+.gray_input {
+    color: #fff !important;
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+.white_input {
+    color: #2d3748 !important;
+    border: 1px solid #718096 !important;
+}
+
 /* _lg */
 @media only screen and (max-width: 1440px) {
 

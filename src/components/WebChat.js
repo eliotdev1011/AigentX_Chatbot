@@ -2,7 +2,6 @@ import * as React from 'react'
 import '../css/aix_base.css'
 import '../css/animations.css';
 
-import { MdMinimize, MdViewSidebar } from 'react-icons/md';
 import { IoMdClose } from 'react-icons/io';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { FiMessageSquare } from 'react-icons/fi';
@@ -18,6 +17,10 @@ function WebChat () {
     const [curMsg ,setCurMsg] = useState('');
     const [UserId, setUserId] = useState("");
     const [isClosed, setIsClosed] = useState(0);
+
+    const [scopeId, setScopeId] = useState(localStorage.getItem("scopeId") ? localStorage.getItem("scopeId") : "7700057");
+    const [userToken, setUserToken] = useState(localStorage.getItem("userToken") ? localStorage.getItem("userToken") : "35e26211fa1d4746bc814f9cb2a478b8");
+
     const divRef = useRef(null);
 
     const initialDB = [{userId:"ai", data: "Hello, I'm Andrew, AI Agent 🤖. Let's optimize your business with AI! Write me in any language 🌍..."},
@@ -29,6 +32,22 @@ function WebChat () {
     const handleInputChange = (event) => {
         setCurMsg(event.target.value);
     };
+
+    const handleScopeIdChange = (event) => {
+        setScopeId(event.target.value);
+    };
+
+    const handleUserTokenChange = (event) => {
+        setUserToken(event.target.value);
+    };
+
+    const setSettingValues = () => {
+        if(scopeId != "")
+            localStorage.setItem("scopeId", scopeId);
+
+        if(userToken != "")
+           localStorage.setItem("userToken", userToken);
+    }
     
     const sendMessage = () => {        
         if(curMsg != '') {  //  && msgDB[msgDB.length - 1].userId == "ai"  
@@ -176,18 +195,18 @@ function WebChat () {
     }, [msgDB]);
 
     return (
-        <div className={`${isClosed == 0 ? "bg-[#252729] shadow-xl" : "bg-transparent border-none shadow-none"} relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-full lg:w-[500px] h-[700px] border-gray-500 border-2`}>
+        <div className={`${isClosed == 0 ? "bg-[#252729] shadow-xl" : "bg-transparent border-none shadow-none"} webchat relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-full lg:w-[500px] h-[700px] border-gray-500 border-2`}>
             {/* Modal */}
             {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
                 <div className='relative flex flex-col justify-center w-full h-full text-white'>
                     <div className='text-xl text-center text-md'>You want to close chat room?</div>
                     <div className='flex flex-row justify-center gap-3 mt-7'>
-                        <button onClick={() => setShowModal(0)} className='px-8 py-1 bg-transparent border border-white rounded-xl'>Cancel</button>
+                        <button onClick={() => setShowModal(0)} className='px-8 py-1 outline_button rounded-xl'>Cancel</button>
                         <button 
                             onClick={() => {
                                 setIsClosed(1); 
                                 setShowModal(0);}} 
-                            className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-2 px-9'>
+                            className='py-2 gradient_button rounded-xl px-9'>
                             Close
                         </button>
                     </div>
@@ -200,21 +219,24 @@ function WebChat () {
                     <div className='text-xl text-center text-md'>Please change settings for better results</div>
                     <div className='flex flex-col items-center justify-center gap-3 mt-5'>
                         API URL
-                        <input className='w-2/3 px-3 py-1 text-gray-800 border border-gray-600 rounded-xl' placeholder='https://eros-ai.cloud:2053/'></input>
+                        <input disabled className='w-2/3 px-3 py-2 white_input rounded-xl' placeholder='https://eros-ai.cloud:2053/'></input>
                     </div>
                     <div className='flex flex-col items-center justify-center gap-3 mt-5'>
                         ScopeId
-                        <input className='w-2/3 px-3 py-1 text-gray-800 border border-gray-600 rounded-xl' placeholder='7700057'></input>
+                        <input className='w-2/3 px-3 py-2 white_input rounded-xl' value={scopeId} onChange={handleScopeIdChange} placeholder='7700057'></input>
                     </div>
                     <div className='flex flex-col items-center justify-center gap-3 mt-5'>
                         User Token
-                        <input className='w-2/3 px-3 py-1 text-gray-800 border border-gray-600 rounded-xl' placeholder='35e26211fa1d4746bc814f9cb2a478b8'></input>
+                        <input className='w-2/3 px-3 py-2 white_input rounded-xl' value={userToken} onChange={handleUserTokenChange} placeholder='35e26211fa1d4746bc814f9cb2a478b8'></input>
                     </div>
                     <div className='flex flex-row justify-center gap-3 mt-7'>
-                        <button onClick={() => setShowModal(0)} className='py-1 bg-transparent border border-white px-9 rounded-xl'>Save</button>
+                        <button onClick={() => {
+                            setSettingModal(0);
+                            setSettingValues();
+                        }} className='py-1 outline_button px-9 rounded-xl'>Save</button>
                         <button 
                             onClick={() => {setSettingModal(0);}} 
-                            className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-2 px-9'>
+                            className='py-2 gradient_button rounded-xl px-9'>
                             Close
                         </button>
                     </div>
@@ -227,7 +249,7 @@ function WebChat () {
 
             {/* Navbar */}
             <div className={`${isClosed == 0 ? "block" : "hidden"} fadeIn`}>
-                <div className='h-[77px] w-full p-2 items-center bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] flex justify-between'>
+                <div className='h-[77px] w-full p-2 items-center gradient_button flex justify-between'>
                     <div className='flex flex-row items-center gap-2 text-white'>
                         <img src="img/webchat_logo.png" className='w-11 h-11'></img>
                         <p>Integrately AI Agent</p>
@@ -251,11 +273,11 @@ function WebChat () {
                 
                 {/* Message Input */}
                 <div className='absolute bottom-0 left-0 p-4 w-full border-t border-[#FFFFFF1A] gap-3 flex flex-row justify-center'>
-                    <input onKeyDown={handleKeyDown} type="text" value={curMsg} onChange={handleInputChange} placeholder='Message' className='bg-transparent border border-[#FFFFFF1A] p-2 rounded-xl w-[330px] text-white'></input>
-                    <button onClick = {sendMessage} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] px-3 text-white rounded-xl'>
+                    <input onKeyDown={handleKeyDown} type="text" value={curMsg} onChange={handleInputChange} placeholder='Message' className='gray_input p-2 rounded-xl w-[330px]'></input>
+                    <button onClick = {sendMessage} className='px-3 text-white gradient_button rounded-xl'>
                         <FaTelegramPlane className='w-5 h-5' />
                     </button>
-                    <button onClick = {() => {setSettingModal(1)}} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] px-3 text-white rounded-xl'>
+                    <button onClick = {() => {setSettingModal(1)}} className='px-3 text-white gradient_button rounded-xl'>
                         <FiSettings className='w-5 h-5' />
                     </button>
                 </div>
