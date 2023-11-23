@@ -195,14 +195,14 @@ function WebChat () {
     }, [msgDB]);
 
     return (
-        <div className={`${isClosed == 0 ? "bg-[#252729] shadow-xl" : "bg-transparent border-none shadow-none"} webchat relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-full lg:w-[500px] h-[700px] border-gray-500 border-2`}>
+        <div className={`${isClosed == 0 ? "bg-[#252729]" : "bg-transparent border-none"} webchat relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-[100vw] sm:w-[500px] h-[700px] border-gray-500 border-2`}>
             {/* Modal */}
             {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
                 <div className='relative flex flex-col justify-center w-full h-full text-white'>
                     <div className='text-xl text-center text-md'>You want to close chat room?</div>
                     <div className='flex flex-row justify-center gap-3 mt-7'>
                         <button onClick={() => setShowModal(0)} className='px-8 py-1 outline_button rounded-xl'>Cancel</button>
-                        <button 
+                        <button
                             onClick={() => {
                                 setIsClosed(1); 
                                 setShowModal(0);}} 
@@ -243,12 +243,12 @@ function WebChat () {
                 </div>
             </div>) : null}
 
-            <button onClick = {() => setIsClosed(0)} className={`fadeIn absolute ${isClosed == 1 ? "block" : "hidden"} hover:translate-y-[-10px] transition-transform duration-700 ease-in-out bottom-0 right-5 bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] p-3 text-white rounded-xl`}>
+            <button onClick = {() => setIsClosed(0)} className={`fadeIn absolute ${isClosed == 1 ? "block" : "hidden"} hover:translate-y-[-10px] transition-transform duration-700 ease-in-out bottom-0 right-5 gradient_button p-3 text-white rounded-xl`}>
                 <FiMessageSquare className='w-5 h-5' />
             </button>
 
-            {/* Navbar */}
             <div className={`${isClosed == 0 ? "block" : "hidden"} fadeIn`}>
+                {/* Navbar */}
                 <div className='h-[77px] w-full p-2 items-center gradient_button flex justify-between'>
                     <div className='flex flex-row items-center gap-2 text-white'>
                         <img src="img/webchat_logo.png" className='w-11 h-11'></img>
