@@ -18,6 +18,13 @@ function WebChat () {
     const [UserId, setUserId] = useState("");
     const [isClosed, setIsClosed] = useState(0);
 
+    const scopeId_GET = new URLSearchParams(window.location.search).get('scopeId');
+    const userToken_GET = new URLSearchParams(window.location.search).get('userToken');
+
+    // console.log('-----------------------');
+    // console.log(scopeId_GET );
+    // console.log(userToken_GET);
+
     const [scopeId, setScopeId] = useState(localStorage.getItem("scopeId") ? localStorage.getItem("scopeId") : "7700057");
     const [userToken, setUserToken] = useState(localStorage.getItem("userToken") ? localStorage.getItem("userToken") : "35e26211fa1d4746bc814f9cb2a478b8");
 
@@ -54,8 +61,10 @@ function WebChat () {
             setCurMsg('');
 
             axios.post(localStorage.getItem("apiUrl") ? localStorage.getItem("apiUrl") : 'https://eros-ai.cloud:2053/' + 'handle_tasks', {
-                "scope_id": localStorage.getItem("scopeId") ? localStorage.getItem("scopeId") : "7700057",
-                "secret": localStorage.getItem("userToken") ? localStorage.getItem("userToken") : "35e26211fa1d4746bc814f9cb2a478b8",
+                // "scope_id": localStorage.getItem("scopeId") ? localStorage.getItem("scopeId") : "7700057",
+                "scope_id": scopeId_GET,
+                // "secret": localStorage.getItem("userToken") ? localStorage.getItem("userToken") : "35e26211fa1d4746bc814f9cb2a478b8",
+                "secret": userToken_GET,
                 "user_id": UserId,
                 "user_message":curMsg,
                 "channel":"webchat",
@@ -195,7 +204,7 @@ function WebChat () {
     }, [msgDB]);
 
     return (
-        <div className={`${isClosed == 0 ? "bg-[#252729]" : "bg-transparent border-none"} webchat relative rounded-xl text-left gap-5 flex flex-col overflow-hidden w-[100vw] sm:w-[500px] h-[700px] border-gray-500 border-2`}>
+        <div className={`${isClosed == 0 ? "bg-[#252729]" : "bg-transparent border-none"} webchat relative rounded-xl text-left gap-5 flex flex-col overflow-hidden lg:w-[70vw] md:w-[80vw] sm:w-[90vw] w-[100vw] h-[90vh] border-gray-500 border-2`}>
             {/* Modal */}
             {showModal == 1 ? (<div className='absolute fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
                 <div className='relative flex flex-col justify-center w-full h-full text-white'>
@@ -261,7 +270,7 @@ function WebChat () {
                 </div>
 
                 {/* Main Chat */}
-                <div ref={divRef} className='w-full h-[460px] overflow-y-auto relative px-2'>
+                <div ref={divRef} className='w-full h-[700px] overflow-y-auto relative px-2'>
                     <div className='flex flex-col items-center mt-5 text-white'>
                         <img src='img/chat_logo.png' className='w-20 h-20'></img>
                         <div className='text-2xl mt-7'>Integrately AI Agent</div>
@@ -273,13 +282,13 @@ function WebChat () {
                 
                 {/* Message Input */}
                 <div className='absolute bottom-0 left-0 p-4 w-full border-t border-[#FFFFFF1A] gap-3 flex flex-row justify-center'>
-                    <input onKeyDown={handleKeyDown} type="text" value={curMsg} onChange={handleInputChange} placeholder='Message' className='gray_input p-2 rounded-xl w-[330px]'></input>
+                    <input onKeyDown={handleKeyDown} type="text" value={curMsg} onChange={handleInputChange} placeholder='Message' className='w-2/3 p-2 gray_input rounded-xl'></input>
                     <button onClick = {sendMessage} className='px-3 text-white gradient_button rounded-xl'>
                         <FaTelegramPlane className='w-5 h-5' />
                     </button>
-                    <button onClick = {() => {setSettingModal(1)}} className='px-3 text-white gradient_button rounded-xl'>
+                    {/* <button onClick = {() => {setSettingModal(1)}} className='px-3 text-white gradient_button rounded-xl'>
                         <FiSettings className='w-5 h-5' />
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div> 
