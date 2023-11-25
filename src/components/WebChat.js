@@ -167,10 +167,10 @@ function WebChat () {
         for(let i = 0; i < msgDB.length; i ++){
             if(msgDB[i].userId == "ai") {
                 tmp = [...tmp, (
-                    <div className='relative flex flex-row gap-1 mt-5 text-white'>
+                    <div className='relative flex flex-row w-3/4 gap-1 mt-5 text-white sm:w-2/3'>
                         <img src="img/webchat_logo.png" className='w-9 h-9'></img>
                         <div className='absolute p-1 bg-white rounded-full top-[25px] left-[25px] bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] border border-white'></div>
-                        <div className='p-2 bg-[#FFFFFF1A] max-w-sm rounded-xl'>
+                        <div className='p-2 bg-[#FFFFFF1A] rounded-xl'>
                             {msgDB[i].data != "Loading" ? msgDB[i].data : (
                                 <button className="buttonload">
                                     <i className="fa fa-spinner fa-spin"></i>
@@ -183,7 +183,7 @@ function WebChat () {
             else {
                 tmp = [...tmp, (
                     <div className='flex flex-row justify-end gap-3 mt-5 text-white right-3'>
-                        <div className='p-2 bg-[#FFFFFF1A] max-w-sm rounded-xl'>
+                        <div className='p-2 bg-[#FFFFFF1A] max-w-xl rounded-2xl'>
                             {msgDB[i].data}
                         </div>
                     </div>
@@ -193,10 +193,10 @@ function WebChat () {
 
         if(msgDB[msgDB.length - 1].userId != "ai")
             tmp = [...tmp, (
-                <div className='relative flex flex-row gap-1 mt-5 text-white'>
+                <div className='relative flex flex-row w-3/4 gap-1 mt-5 text-white sm:w-2/3'>
                 <img src="img/webchat_logo.png" className='w-9 h-9'></img>
                 <div className='absolute p-1 bg-white rounded-full top-[25px] left-[25px] bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] border border-white'></div>
-                <div className='p-2 bg-[#FFFFFF1A] max-w-sm rounded-xl'>
+                <div className='p-2 bg-[#FFFFFF1A] rounded-xl'>
                     <button className="buttonload">
                         <i className="fa fa-spinner fa-spin"></i>
                     </button>
@@ -274,7 +274,7 @@ function WebChat () {
                 </div>
 
                 {/* Main Chat */}
-                <div ref={divRef} className='w-full h-[700px] overflow-y-auto relative px-2'>
+                <div ref={divRef} className='relative w-full px-2 overflow-y-auto' style={{height:"calc(100vh - 300px)"}}>
                     <div className='flex flex-col items-center mt-5 text-white'>
                         <img src='img/chat_logo.png' className='w-20 h-20'></img>
                         <div className='text-2xl mt-7'>Integrately AI Agent</div>
