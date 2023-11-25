@@ -13,6 +13,7 @@ import CustomSwitch from '../Switches/CustomSwitch';
 
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Sidebar from './Sidebar';
+import Leftbar from './Leftbar';
 
 import { useState, useEffect } from 'react';
 import { FaCheck, FaEye, FaEdit } from 'react-icons/fa';
@@ -39,25 +40,28 @@ function EditGroups () {
             className = {`
                 ${i % 2 == 0 ? 'bg-[#FFFFFF0D]' : 'bg-transparent'}
                 rounded-xl flex flex-row p-4 py-5 hover:bg-[#393A4C]`}>
-            <div className='flex flex-row items-center justify-center w-1/5 gap-1'>
+            <div className='flex flex-row items-center justify-start w-1/5 gap-1'>
                 {/* <CustomCheckBox /> */}
                 {tableData[i][0]}
             </div>
-            <div className='flex flex-row items-center justify-center w-1/5 gap-1'>
+            <div className='flex flex-row items-center justify-start w-1/5 gap-1'>
                 {tableData[i][1]}
             </div>
-            <div className='w-1/5'>
+            <div className='flex justify-start w-1/5'>
                 {tableData[i][2] == "Active" && (<a className='bg-[#52C41A1A] p-2 rounded-xl text-[#52C41A] font-medium'>Active</a>)}
                 {tableData[i][2] == "Setup" && (<a className='bg-[#FFE6621A] p-2 rounded-xl text-[#FFE662] font-medium'>Setup</a>)}
                 {(tableData[i][2] != "Setup" && tableData[i][2] != "Active" && tableData[i][2]) && (<a className='bg-[#FFFFFF1A] p-2 rounded-xl text-white font-medium'>{tableData[i][2]}</a>)}
             </div>
-            <div className='flex flex-row items-center justify-center w-1/5 gap-1'>
+            <div className='flex flex-row items-center justify-start w-1/5 gap-1'>
                 {tableData[i][3]}
             </div>
-            <div className='flex flex-row items-center justify-center w-1/5 gap-3'>
-                <FaEye className='w-5 h-5 cursor-pointer hover:text-green-500'/>
-                <a href="/aigentx/editknowledge"><FaEdit className='w-5 h-5 cursor-pointer hover:text-blue-500'/></a>
-                <MdDelete className='w-5 h-5 cursor-pointer hover:text-red-500'/>
+            <div className='flex flex-row items-center justify-start w-1/5 gap-3'>
+                <FaEye className='w-4 h-4 cursor-pointer hover:text-green-500'/>
+                <a href="/aigentx/editknowledge"><img src="../img/edit_icon.png"></img></a>
+                <img src="../img/delete_icon.png" className='cursor-pointer'></img>
+            
+                {/* <a href="/aigentx/editknowledge"><FaEdit className='w-5 h-5 cursor-pointer hover:text-blue-500'/></a>
+                <MdDelete className='w-5 h-5 cursor-pointer hover:text-red-500'/> */}
             </div>
         </div>
       )];
@@ -68,7 +72,7 @@ function EditGroups () {
     return (
       <div className="App bg-[#17191B] body">
         <Navbar />
-        <Sidebar />
+        {/* <Sidebar /> */}
 
             {/* Modal */}
             {showModal == 1 ? (<div className='fixed fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
@@ -93,100 +97,106 @@ function EditGroups () {
             </div>
         </div>) : null}
 
-        <div className='flex items-center justify-center w-full px-3 body lg:px-0'>
-          <div className='flex justify-start w-full max-w-7xl'>
-            <div className='flex flex-col items-start w-full my-10'>
-              <CustomBreadCrumb category={['List of groups', 'Edit group']} />
-              <div className='mt-6 text-3xl font-medium text-white lg:text-4xl'>
-                Edit group
-              </div>
-              <div className='w-full bg-[#FFFFFF0D] rounded-xl p-10 mt-10'>
-                <div className='flex flex-row items-center justify-center gap-2 font-medium text-white border-[#393A4C] border p-1 py-2 rounded-xl'>
-                    Ownership Verified
-                    <FaCheck />
+        <div className='flex flex-row'>
+            <div className='hidden sm:block'>
+                <Leftbar />
+            </div>
+            <div className='flex items-center justify-center w-full px-3 body lg:px-0'>
+            <div className='flex justify-start w-full max-w-7xl'>
+                <div className='flex flex-col items-start w-full my-10'>
+                <CustomBreadCrumb category={['List of groups', 'Edit group']} />
+                <div className='mt-6 text-3xl font-medium text-white lg:text-4xl'>
+                    Edit group
                 </div>
-                <div className='grid grid-cols-1 gap-5 mt-10 lg:grid-cols-2'>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Company Informatino
-                        </div>
-                        <textarea rows="2" cols="15" name="text" placeholder = "Detailed info about your project" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                <div className='w-full bg-[#FFFFFF0D] rounded-xl p-10 mt-10'>
+                    <div className='flex flex-row items-center justify-start gap-2 p-1 py-2 font-medium text-white text-md rounded-xl'>
+                        Ownership Verified
+                        <img src="../img/check_icon.png"></img>
+                        {/* <FaCheck /> */}
                     </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            How To Buy
+                    <div className='grid grid-cols-1 gap-5 mt-10 lg:grid-cols-2'>
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Company Informatino
+                            </div>
+                            <textarea rows="2" cols="15" name="text" placeholder = "Detailed info about your project" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
-                        <textarea rows="2" cols="15" name="text" placeholder = "e.g. Uniswap lin" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
-                    </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Coin Gecko Info
-                            <CustomSwitch checked = { true } disabled = { false }/>
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                How To Buy
+                            </div>
+                            <textarea rows="2" cols="15" name="text" placeholder = "e.g. Uniswap lin" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
-                        <textarea rows="2" cols="15" name="text" placeholder = "https://www.coingecko.com/en/coins/aigentx"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
-                    </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Contacts
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Coin Gecko Info
+                                <CustomSwitch checked = { true } disabled = { false }/>
+                            </div>
+                            <textarea rows="2" cols="15" name="text" placeholder = "https://www.coingecko.com/en/coins/aigentx"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
-                        <textarea rows="2" cols="15" name="text" placeholder = "All project contract addresses and short description"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
-                    </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Dex Tools Link
-                            <CustomSwitch checked = { false } disabled = { false }/>
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Contacts
+                            </div>
+                            <textarea rows="2" cols="15" name="text" placeholder = "All project contract addresses and short description"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
-                        <textarea rows="2" cols="15" name="text" placeholder = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
-                    </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Auto Detection
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Dex Tools Link
+                                <CustomSwitch checked = { false } disabled = { false }/>
+                            </div>
+                            <textarea disabled rows="2" cols="15" name="text" placeholder = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
-                        <CustomComboBox myItem = {[{id: 1, name: "Active"}, {id: 2, name: "Disabled"}]}/>
-                    </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Dex Screener
-                            <CustomSwitch checked = { false } disabled = { false }/>
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Auto Detection
+                            </div>
+                            <CustomComboBox myItem = {[{id: 1, name: "Active"}, {id: 2, name: "Disabled"}]}/>
                         </div>
-                        <textarea rows="2" cols="15" name="text" placeholder = "https://dexscreener.com/ethereum/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
-                    </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Tone of Voice
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Dex Screener
+                                <CustomSwitch checked = { false } disabled = { false }/>
+                            </div>
+                            <textarea disabled rows="2" cols="15" name="text" placeholder = "https://dexscreener.com/ethereum/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
-                        <CustomComboBox myItem = {[{id: 1, name: "GET /toneOfVoiceOptions"}]}/>
-                    </div>
-                    <div className='flex flex-col text-white'>
-                        <div className='flex justify-between mb-3'>
-                            Token Info
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Tone of Voice
+                            </div>
+                            <CustomComboBox myItem = {[{id: 1, name: "GET /toneOfVoiceOptions"}]}/>
                         </div>
-                        <textarea rows="2" cols="15" name="text" placeholder = "Token utility and tokenomics"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
-                    </div>
-                </div>
-                <div className='mt-10 font-medium text-white border-[#393A4C] border items-center py-2 px-4 rounded-xl flex justify-between'>
-                    Knowledge Base Management
-                    <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-1 px-3'>+</button>               
-                </div>
-                <div className='w-full mt-10 overflow-auto text-white'>
-                    <div className='w-[1200px]'>
-                        <div className="flex flex-row p-4 py-5 bg-transparentrounded-xl">
-                            <div className='flex flex-row justify-center w-1/5'>Name</div>
-                            <div className='w-1/5'>Type</div>
-                            <div className='w-1/5'>Status</div>
-                            <div className='w-1/5'>Size</div>
-                            <div className='w-1/5'>Action</div>
+                        <div className='flex flex-col text-white'>
+                            <div className='flex justify-between mb-3'>
+                                Token Info
+                            </div>
+                            <textarea rows="2" cols="15" name="text" placeholder = "Token utility and tokenomics"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
-                        {content}
                     </div>
-                </div>
-                <div className='flex flex-row justify-center w-full gap-5 mt-10'>
-                    <a href="/aigentx"><CustomButton size = "normal" buttonName = "Cancel" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" /></a>
-                    <CustomButton size = "normal" buttonName = "Save" bgFrom = "from-[#ED23FF]" bgTo = "to-[#8E44FF]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
-                </div>
+                    <div className='flex items-center justify-between px-4 py-2 mt-10 font-medium text-white rounded-xl'>
+                        Knowledge Base Management
+                        <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-1 px-3'>+</button>               
+                    </div>
+                    <div className='w-full mt-10 overflow-auto text-white'>
+                        <div className='w-[1200px]'>
+                            <div className="flex flex-row p-4 py-5 text-left bg-transparent rounded-xl">
+                                <div className='flex flex-row w-1/5'>Name</div>
+                                <div className='w-1/5'>Type</div>
+                                <div className='w-1/5'>Status</div>
+                                <div className='w-1/5'>Size</div>
+                                <div className='w-1/5'>Action</div>
+                            </div>
+                            {content}
+                        </div>
+                    </div>
+                    <div className='flex flex-row justify-center w-full gap-5 mt-10'>
+                        <a href="/aigentx"><CustomButton size = "normal" buttonName = "Cancel" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" /></a>
+                        <CustomButton size = "normal" buttonName = "Save" bgFrom = "from-[#ED23FF]" bgTo = "to-[#8E44FF]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
+                    </div>
+                    </div>
                 </div>
             </div>
-          </div>
+            </div>
         </div>
       </div>
     );

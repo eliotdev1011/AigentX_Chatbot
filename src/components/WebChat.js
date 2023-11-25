@@ -117,6 +117,10 @@ function WebChat () {
         
         const intervalId = setInterval(() => {
             updateDB();
+
+            if (divRef.current) {
+                divRef.current.scrollTop = divRef.current.scrollHeight;
+            }
         }, 1000);
       
         return () => {

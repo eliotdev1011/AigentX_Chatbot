@@ -30,7 +30,7 @@ export default function CustomPagination(props) {
     }, []);
   
     return (
-    <div className="flex flex-row items-center justify-center w-full gap-3 text-center">
+    <div className="flex flex-row items-center justify-end w-full gap-3 text-center">
         {content}
     </div>
   )

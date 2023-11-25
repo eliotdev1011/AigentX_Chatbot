@@ -19,10 +19,10 @@ function classNames(...classes) {
 export default function Navbar() {
   return (
     <div className='body'>
-        <Disclosure as="nav" className="bg-[#232527]">
+        <Disclosure as="nav" className="bg-[#17191B]">
         {({ open }) => (
             <>
-            <div className="px-2 py-1 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="w-full px-2 py-1 mx-auto sm:px-6 lg:px-8">
                 <div className="relative flex items-center justify-between h-16">
                     <div className="inset-y-0 left-0 flex items-center sm:hidden">
                         {/* Mobile menu button*/}
@@ -39,7 +39,7 @@ export default function Navbar() {
                     <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-between">
                         {/* 1 */}
                         <div className="relative items-center justify-center flex-shrink-0 hidden lg:flex">
-                            <img src = "../img/logo.png"></img>
+                            <img src = "../img/logo.png" className='cursor-pointer'></img>
                             {/* <input className='rounded-xl py-[6px] px-2 pl-8 bg-[#393A3C]' placeholder='Search'></input>
                             <FaSearch className='absolute w-[14px] h-[14px] text-[#88898A] -translate-y-1/2 top-1/2 left-2' /> */}
                         </div>
