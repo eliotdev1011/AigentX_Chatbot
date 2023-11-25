@@ -45,7 +45,7 @@ function AigentX () {
           {tableData[i][1] == "Not Active" && <div className='w-1/3'><a className='bg-[#ED15221A] p-2 rounded-xl text-[#ED1522] font-medium'>Not Active</a></div>}
           <div className='flex flex-row items-center justify-end w-1/3 gap-3'>
             <a href="/aigentx/editgroups"><img src="../img/edit_icon.png"></img></a>
-            <img src="../img/delete_icon.png" className='cursor-pointer'></img>
+            <img src="../img/delete_icon.png" onClick={() => setShowModal(1)} className='cursor-pointer'></img>
             {/* <FaEdit className='w-5 h-5 cursor-pointer hover:text-blue-500'/> */}
             {/* <MdDelete className='w-6 h-6 cursor-pointer hover:text-red-500' onClick={() => setShowModal(1)}/> */}
           </div>
@@ -71,20 +71,22 @@ function AigentX () {
             </div>
         </div>) : null}
         <Navbar />
-        {/* <Sidebar /> */}
+        <div className='block super:hidden'>
+          <Sidebar />
+        </div>
         <div className='flex flex-row'>
-          <div className='hidden sm:block'>
+          <div className='hidden super:block'>
             <Leftbar />
           </div>
           <div className='flex items-center justify-center w-full px-3 body'>
             <div className='flex justify-start w-full max-w-7xl'>
-              <div className='flex flex-col items-start w-full mt-10'>
+              <div className='flex flex-col items-start w-full mt-4'>
                 <CustomBreadCrumb category={['List of groups']} />
-                <div className='mt-6 text-3xl font-medium text-white lg:text-4xl'>List of groups</div>
-                <div className='mt-20 mb-10 p-10 flex rounded-xl flex-col bg-[#FFFFFF0D] w-full'>
+                <div className='mt-4 text-3xl font-medium text-white lg:text-4xl'>List of groups</div>
+                <div className='mt-10 mb-10 p-10 flex rounded-xl flex-col bg-[#FFFFFF0D] w-full'>
                   <div className='font-medium text-left text-white text-md lg:text-xl'>All bots</div>
-                  <div className='w-full mt-10 text-white'>
-                    <div className='w-full'>
+                  <div className='w-full mt-6 overflow-auto text-white'>
+                    <div className='w-[1200px]'>
                       <div className="bg-[#232527] rounded-xl flex flex-row p-4 py-5">
                         <div className='flex flex-row justify-start w-1/3'>
                           {/* <CustomCheckBox /> */}

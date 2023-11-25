@@ -10,7 +10,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Landing />}></Route>
+        <Route path='/webchat' element={<Landing />}></Route>
+        <Route path='/' element={<AigentX />}></Route>
         <Route path='/aigentx' element={<AigentX />}></Route>
         <Route path='/aigentx/editgroups' element={<EditGroups />}></Route>
         <Route path='/aigentx/editknowledge' element={<EditKnowledge />}></Route>

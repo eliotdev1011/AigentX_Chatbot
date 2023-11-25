@@ -53,7 +53,7 @@ export default function Sidebar() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                       >
-                        <div className="absolute top-0 right-[-50px] flex pt-4 pr-2 -ml-8 sm:-ml-10 sm:pr-4">
+                        <div className="absolute top-0 right-0 flex pt-4 pr-2 -ml-8 sm:-ml-10 sm:pr-4">
                           <button
                             type="button"
                             className="relative text-gray-300 rounded-md hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
@@ -117,15 +117,15 @@ export default function Sidebar() {
                               <div className='flex flex-row justify-between bg-[#FFFFFF0D] p-4 rounded-xl'>
                                 <div className='flex flex-row gap-3'>
                                   <img src="../img/logo_price.png" className='w-10 h-10'></img>
-                                  <div className='flex flex-col items-start'>
+                                  <div className='flex flex-col items-start gap-1'>
                                     <div className='text-sm text-[#FFFFFF66]'>Aigent</div>
-                                    <div className='text-xl text-white'>AIX</div>
+                                    <div className='text-white text-md'>AIX</div>
                                   </div>
                                 </div>
                                 <div className='flex flex-col'>
                                   <div className='text-[#FFFFFF66] text-right'>$100.00</div>
                                   <div className='flex flex-row items-center justify-center gap-2'>
-                                    <div className='text-xl text-white'>0.34</div>
+                                    <div className='text-white text-md'>0.34</div>
                                     <div className='text-[#52C41A] bg-[#52C41A1A] flex flex-row items-center py-[2px] rounded-xl px-1'>
                                       <RiArrowUpSFill className='text-[#52C41A] h-5 w-5' />
                                       13%

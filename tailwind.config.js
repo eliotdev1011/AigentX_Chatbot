@@ -24,6 +24,9 @@ module.exports = {
       "lg": {
         min: "1440px",
       },
+      "super": {
+        min: "1640px",
+      },
     } 
   },
   plugins: [],

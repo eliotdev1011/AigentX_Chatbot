@@ -21,22 +21,22 @@ function EditKnowledge () {
     return (
       <div className="App bg-[#17191B]">
         <Navbar />
-        {/* <Sidebar /> */}
-
+        <div className='block md:hidden'>
+            <Sidebar />
+        </div>
         <div className='flex items-center justify-center w-full px-3 body lg:px-0'>
-          <div className='flex justify-start w-full max-w-7xl'>
-            <div className='flex flex-col items-start w-full my-10'>
-              <CustomBreadCrumb category={['List of groups', 'Edit group', 'Edit Knowledge Base']} />
-              <div className='flex flex-row'>
-                <div className='hidden sm:block'>
+          <div className='flex w-full'>            
+            <div className='flex flex-row w-full'>
+                <div className='hidden md:block'>
                     <Leftbar />
                 </div>
-
-                <div className=''>
+                <div className='w-full'>
+                <div className='flex flex-col items-start justify-center mx-auto my-10 mt-4 max-w-7xl'>
+                    <CustomBreadCrumb category={['List of groups', 'Edit group', 'Edit Knowledge Base']} />
                     <div className='mt-6 text-3xl font-medium text-white lg:text-4xl'>
                     Edit Knowledge Base
                     </div>
-                    <div className='w-full bg-[#FFFFFF0D] rounded-xl p-10 mt-10'>
+                    <div className='w-full bg-[#FFFFFF0D] rounded-xl p-6 mt-10'>
                     <div className='flex flex-row items-center justify-start gap-2 p-1 py-2 font-medium text-white rounded-xl'>
                         KnowledgeBase Management
                     </div>
@@ -72,7 +72,7 @@ function EditKnowledge () {
                     </div>
                     </div>
                 </div>
-               </div>
+                </div>
             </div>
           </div>
         </div>

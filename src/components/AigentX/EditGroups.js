@@ -72,7 +72,9 @@ function EditGroups () {
     return (
       <div className="App bg-[#17191B] body">
         <Navbar />
-        {/* <Sidebar /> */}
+        <div className='block super:hidden'>
+            <Sidebar />
+        </div>
 
             {/* Modal */}
             {showModal == 1 ? (<div className='fixed fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
@@ -98,23 +100,23 @@ function EditGroups () {
         </div>) : null}
 
         <div className='flex flex-row'>
-            <div className='hidden sm:block'>
+            <div className='hidden super:block'>
                 <Leftbar />
             </div>
             <div className='flex items-center justify-center w-full px-3 body lg:px-0'>
             <div className='flex justify-start w-full max-w-7xl'>
-                <div className='flex flex-col items-start w-full my-10'>
+                <div className='flex flex-col items-start w-full mt-4 mb-10'>
                 <CustomBreadCrumb category={['List of groups', 'Edit group']} />
                 <div className='mt-6 text-3xl font-medium text-white lg:text-4xl'>
                     Edit group
                 </div>
-                <div className='w-full bg-[#FFFFFF0D] rounded-xl p-10 mt-10'>
+                <div className='w-full bg-[#FFFFFF0D] rounded-xl p-8 mt-10'>
                     <div className='flex flex-row items-center justify-start gap-2 p-1 py-2 font-medium text-white text-md rounded-xl'>
                         Ownership Verified
                         <img src="../img/check_icon.png"></img>
                         {/* <FaCheck /> */}
                     </div>
-                    <div className='grid grid-cols-1 gap-5 mt-10 lg:grid-cols-2'>
+                    <div className='grid grid-cols-1 gap-5 mt-8 lg:grid-cols-2'>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
                                 Company Informatino

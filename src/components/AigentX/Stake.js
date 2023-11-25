@@ -24,7 +24,7 @@ function Stake () {
     return (
       <div className="App bg-[#17191B] body">
         <Navbar />
-        <Sidebar />
+        {/* <Sidebar /> */}
         {/* Modal */}
         {showModal == 1 ? (<div className='fixed fadeIn left-0 top-0 w-full h-full bg-transparent z-[1] backdrop-filter backdrop-blur-md'>
             <div className='relative flex flex-col items-center justify-center w-full h-full text-white'>

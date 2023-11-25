@@ -38,8 +38,8 @@ export default function Navbar() {
                     </div>
                     <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-between">
                         {/* 1 */}
-                        <div className="relative items-center justify-center flex-shrink-0 hidden lg:flex">
-                            <img src = "../img/logo.png" className='cursor-pointer'></img>
+                        <div className="relative items-center justify-center flex-shrink-0 hidden sm:flex">
+                            <a href="/"><img src = "../img/logo.png" className='cursor-pointer'></img></a>
                             {/* <input className='rounded-xl py-[6px] px-2 pl-8 bg-[#393A3C]' placeholder='Search'></input>
                             <FaSearch className='absolute w-[14px] h-[14px] text-[#88898A] -translate-y-1/2 top-1/2 left-2' /> */}
                         </div>
@@ -161,7 +161,7 @@ export default function Navbar() {
 
             <Disclosure.Panel className="sm:hidden">
                 <div className="px-2 pt-2 pb-3 space-y-1 text-[#7B7C7D]">
-                {navigation.map((item) => (
+                {/* {navigation.map((item) => (
                     <Disclosure.Button
                     key={item.name}
                     as="a"
@@ -175,7 +175,7 @@ export default function Navbar() {
                     <FaStar className='w-3 h-3' />
                     {item.name}
                     </Disclosure.Button>
-                ))}
+                ))} */}
                 </div>
             </Disclosure.Panel>
             </>
