@@ -3,7 +3,7 @@ import { RiArrowRightSLine, RiArrowUpSFill } from 'react-icons/ri';
 export default function Leftbar () {
     return (
       <div className="bg-[#17191B] p-4 lg:py-10 rounded-xl flex flex-col gap-3 overflow-hidden w-[300px]">
-        <div className='flex flex-col gap-5 text-sm text-center'>
+        <div className='flex flex-col gap-5 text-sm font-medium text-center'>
             <div className='flex flex-row items-center justify-between gap-3 px-6 py-2 text-white cursor-pointer rounded-xl'>
             <div className='flex flex-row items-center justify-center gap-2'>
                 {/* <AiFillControl className='w-5 h-5' /> */}
@@ -59,11 +59,11 @@ export default function Leftbar () {
                     <div className='text-white text-md'>AIX</div>
                 </div>
             </div>
-            <div className='flex flex-col'>
+            <div className='flex flex-col gap-1'>
                 <div className='text-[#FFFFFF66] text-right'>$100.00</div>
                 <div className='flex flex-row items-center justify-center gap-1'>
                 <div className='text-white text-md'>0.34</div>
-                <div className='text-[#52C41A] bg-[#52C41A1A] flex flex-row items-center py-[2px] rounded-xl px-1'>
+                <div className='text-[#52C41A] bg-[#52C41A1A] flex flex-row items-center pr-[2px] rounded-md'>
                     <RiArrowUpSFill className='text-[#52C41A] h-5 w-5' />
                     13%
                 </div>
