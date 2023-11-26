@@ -25,7 +25,7 @@ export default function Leftbar () {
             <div className='flex flex-row items-center justify-center gap-2'>
                 {/* <GiPapers className='w-5 h-5' /> */}
                 <img src="../img/icon_staking.png"></img>
-                <a href="/aigentx/stake">RevSharing Staking</a>                  
+                <a>RevSharing Staking</a>                  
             </div>
             <div>
             {/* <div className='text-gray-900 bg-[#FFFFFF33] rounded-xl px-2'>Soon</div> */}
@@ -40,13 +40,15 @@ export default function Leftbar () {
             </div>
             <RiArrowRightSLine className='text-[#FFFFFF33] w-6 h-6' />
             </div>
+
             <div className='flex text-[#FFFFFF99] flex-row items-center justify-between px-6 gap-3 py-2 cursor-pointer rounded-xl'>
-            <div className='flex flex-row items-center justify-center gap-2'>
-                {/* <IoDocumentText className='w-5 h-5' /> */}
-                <img src="../img/icon_docs.png"></img>
-                Docs
-            </div>
-            <RiArrowRightSLine className='text-[#FFFFFF33] w-6 h-6' />
+                <div className='flex flex-row items-center justify-center gap-[10px] pl-1'>
+                    {/* <IoDocumentText className='w-5 h-5' /> */}
+                    <img src="../img/icon_docs.png"></img>
+                    <a href="https://aigentx.gitbook.io/whitepaper/">Docs</a>
+                </div>
+                
+                <RiArrowRightSLine className='text-[#FFFFFF33] w-6 h-6' />
             </div>
 
             <div className='flex flex-row justify-between bg-[#FFFFFF0D] p-4 rounded-xl'>

@@ -90,7 +90,7 @@ export default function Sidebar() {
                                 <div className='flex flex-row items-center justify-center gap-2'>
                                   {/* <GiPapers className='w-5 h-5' /> */}
                                   <img src="../img/icon_staking.png"></img>
-                                  <a href="/aigentx/stake">RevSharing Staking</a>                  
+                                  <a>RevSharing Staking</a>                  
                                 </div>
                                 <div>
                                 {/* <div className='text-gray-900 bg-[#FFFFFF33] rounded-xl px-2'>Soon</div> */}
@@ -109,7 +109,7 @@ export default function Sidebar() {
                                 <div className='flex flex-row items-center justify-center gap-2'>
                                   {/* <IoDocumentText className='w-5 h-5' /> */}
                                   <img src="../img/icon_docs.png"></img>
-                                  Docs
+                                  <a href="https://aigentx.gitbook.io/whitepaper/">Docs</a>
                                 </div>
                                 <RiArrowRightSLine className='text-[#FFFFFF33] w-6 h-6' />
                               </div>
