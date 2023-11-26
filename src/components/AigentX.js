@@ -33,27 +33,28 @@ function AigentX () {
     var tmp = [];
     
     const jsonObject = JSON.parse(localStorage.getItem('groups'));
-
-    for(let i = 0; i < jsonObject.length; i ++)
-      tmp = [...tmp, (
-        <div className={`hover:bg-[#FFFFFF0D] rounded-xl flex flex-row p-4 py-5 ${i % 2 == 0 ? 'bg-[#FFFFFF0D]' : 'bg-transparent'}`}>
-          <div className={`flex flex-row items-center justify-start w-1/3 gap-1`}>
-            {/* <CustomCheckBox /> */}
-            <img src="../img/bot_image.png" className='w-5 h-5'></img>
-            {jsonObject[i].name}
+    if(jsonObject != undefined && jsonObject != null){
+      for(let i = 0; i < jsonObject.length; i ++)
+        tmp = [...tmp, (
+          <div className={`hover:bg-[#FFFFFF0D] rounded-xl flex flex-row p-4 py-5 ${i % 2 == 0 ? 'bg-[#FFFFFF0D]' : 'bg-transparent'}`}>
+            <div className={`flex flex-row items-center justify-start w-1/3 gap-1`}>
+              {/* <CustomCheckBox /> */}
+              <img src="../img/bot_image.png" className='w-5 h-5'></img>
+              {jsonObject[i].name}
+            </div>
+            {jsonObject[i].status == "active" && <div className='w-1/3'><a className='bg-[#52C41A1A] p-2 rounded-xl text-[#52C41A] font-medium'>Active</a></div>}
+            {jsonObject[i].status == "setup" && <div className='w-1/3'><a className='bg-[#FFE6621A] p-2 rounded-xl text-[#FFE662] font-medium'>Setup</a></div>}
+            {jsonObject[i].status == "incomplete" && <div className='w-1/3'><a className='bg-[#ED15221A] p-2 rounded-xl text-[#ED1522] font-medium'>Not Active</a></div>}
+            <div className='flex flex-row items-center justify-end w-1/3 gap-3'>
+              {/* <a href="/aigentx/editgroups"><img src="../img/edit_icon.png"></img></a> */}
+              <img src="../img/edit_icon.png"></img>
+              <img src="../img/delete_icon.png" onClick={() => setShowModal(1)} className='cursor-pointer'></img>
+              {/* <FaEdit className='w-5 h-5 cursor-pointer hover:text-blue-500'/> */}
+              {/* <MdDelete className='w-6 h-6 cursor-pointer hover:text-red-500' onClick={() => setShowModal(1)}/> */}
+            </div>
           </div>
-          {jsonObject[i].status == "active" && <div className='w-1/3'><a className='bg-[#52C41A1A] p-2 rounded-xl text-[#52C41A] font-medium'>Active</a></div>}
-          {jsonObject[i].status == "setup" && <div className='w-1/3'><a className='bg-[#FFE6621A] p-2 rounded-xl text-[#FFE662] font-medium'>Setup</a></div>}
-          {jsonObject[i].status == "incomplete" && <div className='w-1/3'><a className='bg-[#ED15221A] p-2 rounded-xl text-[#ED1522] font-medium'>Not Active</a></div>}
-          <div className='flex flex-row items-center justify-end w-1/3 gap-3'>
-            {/* <a href="/aigentx/editgroups"><img src="../img/edit_icon.png"></img></a> */}
-            <img src="../img/edit_icon.png"></img>
-            <img src="../img/delete_icon.png" onClick={() => setShowModal(1)} className='cursor-pointer'></img>
-            {/* <FaEdit className='w-5 h-5 cursor-pointer hover:text-blue-500'/> */}
-            {/* <MdDelete className='w-6 h-6 cursor-pointer hover:text-red-500' onClick={() => setShowModal(1)}/> */}
-          </div>
-        </div>
-      )];
+        )];
+      }
     
       setContent(tmp);
    }, [localStorage.getItem('groups')]);
