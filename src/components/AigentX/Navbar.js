@@ -53,7 +53,7 @@ export default function Navbar() {
         });
     }
 
-    if(localStorage.getItem('barer_token') != null && tgUser == "") {
+    if(account.address && localStorage.getItem('barer_token') != null && tgUser == "") {
         const headers = {
             // 'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2RhdGEiOnsid2FsbGV0IjoiMHhEZWFkOEQwRmVkMzU0YWM4OTFDODhDMmZlNjQ5MDIyMzVhRDE4MmZmIn0sImV4cCI6MTcwMTU0MTcyNiwiaWF0IjoxNzAwOTM2OTI2fQ.kLZD4KS976o_RjLocntoyMdqYV2tHFvLHg3Ft3bye-g",
             'Authorization': 'Bearer ' + localStorage.getItem('barer_token'),
@@ -66,8 +66,10 @@ export default function Navbar() {
         .then((response) => {
             console.log('-------Tg user-------');
             console.log(response.data);
-            if(response.data.username == null)
+            if(response.data.username == null && tgUser == "") {
                 alert(account.address + 'Wallet is not connected to any telegram user');
+                setTgUser("Not connected");
+            }
             setTgUser(response.data.username + '#' + response.data.user_id);
         })
         .catch((error) => {
@@ -75,7 +77,7 @@ export default function Navbar() {
         });
     }
 
-    if(groups == 0) {
+    if(account.address && groups == 0) {
         const headers = {
             // 'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2RhdGEiOnsid2FsbGV0IjoiMHhEZWFkOEQwRmVkMzU0YWM4OTFDODhDMmZlNjQ5MDIyMzVhRDE4MmZmIn0sImV4cCI6MTcwMTU0MTcyNiwiaWF0IjoxNzAwOTM2OTI2fQ.kLZD4KS976o_RjLocntoyMdqYV2tHFvLHg3Ft3bye-g",
             'Authorization': 'Bearer ' + localStorage.getItem('barer_token'),
