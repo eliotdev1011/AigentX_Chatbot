@@ -106,31 +106,31 @@ export default function Sidebar() {
                                 <RiArrowRightSLine className='text-[#FFFFFF33] w-6 h-6' />
                               </div>
                               <div className='flex text-[#FFFFFF99] flex-row items-center justify-between px-6 gap-3 py-2 cursor-pointer rounded-xl'>
-                                <div className='flex flex-row items-center justify-center gap-2'>
+                                <div className='flex flex-row items-center justify-center gap-2 pl-1'>
                                   {/* <IoDocumentText className='w-5 h-5' /> */}
                                   <img src="../img/icon_docs.png"></img>
-                                  <a href="https://aigentx.gitbook.io/whitepaper/">Docs</a>
+                                  <a href="https://aigentx.gitbook.io/whitepaper/" className='pl-1'>Docs</a>
                                 </div>
                                 <RiArrowRightSLine className='text-[#FFFFFF33] w-6 h-6' />
                               </div>
 
                               <div className='flex flex-row justify-between bg-[#FFFFFF0D] p-4 rounded-xl'>
                                 <div className='flex flex-row gap-3'>
-                                  <img src="../img/logo_price.png" className='w-10 h-10'></img>
-                                  <div className='flex flex-col items-start gap-1'>
-                                    <div className='text-sm text-[#FFFFFF66]'>Aigent</div>
-                                    <div className='text-white text-md'>AIX</div>
-                                  </div>
-                                </div>
-                                <div className='flex flex-col'>
-                                  <div className='text-[#FFFFFF66] text-right'>$100.00</div>
-                                  <div className='flex flex-row items-center justify-center gap-2'>
-                                    <div className='text-white text-md'>0.34</div>
-                                    <div className='text-[#52C41A] bg-[#52C41A1A] flex flex-row items-center py-[2px] rounded-xl px-1'>
-                                      <RiArrowUpSFill className='text-[#52C41A] h-5 w-5' />
-                                      13%
+                                    <img src="../img/logo_price.png" className='w-10 h-10'></img>
+                                    <div className='flex flex-col items-start gap-1'>
+                                        <div className='text-sm text-[#FFFFFF66]'>Aigent</div>
+                                        <div className='text-white text-md'>AIX</div>
                                     </div>
-                                  </div>
+                                </div>
+                                <div className='flex flex-col gap-1'>
+                                    <div className='text-[#FFFFFF66] text-right'>$100.00</div>
+                                    <div className='flex flex-row items-center justify-center gap-1'>
+                                    <div className='text-white text-md'>0.34</div>
+                                    <div className='text-[#52C41A] bg-[#52C41A1A] flex flex-row items-center pr-[2px] rounded-md'>
+                                        <RiArrowUpSFill className='text-[#52C41A] h-5 w-5' />
+                                        13%
+                                    </div>
+                                    </div>
                                 </div>
                               </div>
                             </div>
