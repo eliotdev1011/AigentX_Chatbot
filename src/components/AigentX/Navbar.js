@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { FaUser, FaPlus, FaSearch, FaStar } from 'react-icons/fa';
+import { FaUser, FaTelegram, FaPlus, FaSearch, FaStar } from 'react-icons/fa';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState, useContext } from 'react';
 import axios from 'axios';
@@ -78,7 +78,7 @@ export default function Navbar() {
                     setTgUser("Not connected");
                 }
                 else
-                    setTgUser(response.data.username + '#' + response.data.user_id);
+                    setTgUser(response.data.username);
             })
             .catch((error) => {
                 console.error(error);
@@ -152,10 +152,6 @@ export default function Navbar() {
                         </div>
                         {/* 3 */}
                         <div className="inset-y-0 right-0 flex items-center gap-3 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                        <div className='flex items-center justify-center gap-2 text-white'>
-                            <FaUser className=''/>
-                            {tgUser}
-                        </div>
                         <ConnectButton.Custom>
                             {({
                                 account,
@@ -204,6 +200,10 @@ export default function Navbar() {
 
                                             return (
                                                 <div style={{ display: 'flex', gap: 12 }} className='text-white border-[#393A3C] border p-[6px] rounded-md'>
+                                                    <div onClick={openAccountModal} className='flex items-center justify-center gap-2 text-white hover:cursor-pointer'>
+                                                        <FaTelegram className='w-6 h-6'/>
+                                                        {tgUser}
+                                                    </div>
                                                     <button
                                                         onClick={openChainModal}
                                                         style={{ display: 'flex', alignItems: 'center' }}

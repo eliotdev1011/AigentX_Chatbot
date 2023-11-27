@@ -14,8 +14,10 @@ import CustomSwitch from '../Switches/CustomSwitch';
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Sidebar from './Sidebar';
 import Leftbar from './Leftbar';
+import MyContext from '../../MyContext';
+import axios from 'axios';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FaCheck, FaEye, FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 
@@ -30,6 +32,38 @@ const tableData = [
 function EditGroups () {
    const [content, setContent] = useState([]);
    const [showModal, setShowModal] = useState(0);
+
+   const {signed, setSigned, barerToken, setBarerToken, groups, setGroups} = useContext(MyContext);
+
+   useEffect(() => {
+    if(groups != "") {
+        const jsonObject = JSON.parse(groups);
+        const currentObject = jsonObject[parseInt(localStorage.getItem('selectedGroup'), 10)];
+
+        const headers = {
+            'Authorization': 'Bearer ' + barerToken,
+            'Content-Type': 'application/json',
+        };
+
+        axios.get('https://eros-ai.cloud:2096/groups/' + currentObject.id, { 
+            headers
+        })
+        .then((response) => {
+            console.log('-------response-------');
+            console.log(response.data.result);
+
+            document.getElementById("company_info").innerText = response.data.result.company_info;  
+            document.getElementById("how_to_buy").innerText = response.data.result.how_to_buy; 
+            document.getElementById("token_info").innerText = response.data.result.token_info; 
+            document.getElementById("coingecko").innerText = response.data.result.coingecko; 
+            document.getElementById("contracts").innerText = response.data.result.contracts; 
+            document.getElementById("dex_tools_link").innerText = response.data.result.dex_tools_link; 
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
+   }, [groups]);
 
    useEffect(() => {
     var tmp = [];
@@ -72,7 +106,7 @@ function EditGroups () {
     return (
       <div className="App bg-[#17191B] body">
         <Navbar />
-        <div className='block super:hidden'>
+        <div className='block md:hidden'>
             <Sidebar />
         </div>
 
@@ -100,7 +134,7 @@ function EditGroups () {
         </div>) : null}
 
         <div className='flex flex-row'>
-            <div className='hidden super:block'>
+            <div className='hidden md:block'>
                 <Leftbar />
             </div>
             <div className='flex items-center justify-center w-full px-3 body lg:px-0'>
@@ -121,33 +155,33 @@ function EditGroups () {
                             <div className='flex justify-between mb-3'>
                                 Company Informatino
                             </div>
-                            <textarea rows="2" cols="15" name="text" placeholder = "Detailed info about your project" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea id="company_info" rows="2" cols="15" name="text" placeholder = "Detailed info about your project" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
                                 How To Buy
                             </div>
-                            <textarea rows="2" cols="15" name="text" placeholder = "e.g. Uniswap lin" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea id="how_to_buy" rows="2" cols="15" name="text" placeholder = "e.g. Uniswap lin" className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
                                 Coin Gecko Info
                                 <CustomSwitch checked = { true } disabled = { false }/>
                             </div>
-                            <textarea rows="2" cols="15" name="text" placeholder = "https://www.coingecko.com/en/coins/aigentx"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea id="coingecko" rows="2" cols="15" name="text" placeholder = "https://www.coingecko.com/en/coins/aigentx"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
                                 Contacts
                             </div>
-                            <textarea rows="2" cols="15" name="text" placeholder = "All project contract addresses and short description"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea id="contracts" rows="2" cols="15" name="text" placeholder = "All project contract addresses and short description"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
                                 Dex Tools Link
                                 <CustomSwitch checked = { false } disabled = { false }/>
                             </div>
-                            <textarea disabled rows="2" cols="15" name="text" value = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-[#FFFFFF1A] bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea id="dex_tools_link" disabled rows="2" cols="15" name="text" value = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-[#FFFFFF1A] bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
@@ -172,7 +206,7 @@ function EditGroups () {
                             <div className='flex justify-between mb-3'>
                                 Token Info
                             </div>
-                            <textarea rows="2" cols="15" name="text" placeholder = "Token utility and tokenomics"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea id="token_info" rows="2" cols="15" name="text" placeholder = "Token utility and tokenomics"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                     </div>
                     <div className='flex items-center justify-between px-4 py-2 text-xl font-medium leading-6 text-white mt-9 rounded-xl'>
@@ -180,7 +214,7 @@ function EditGroups () {
                         <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-1 px-3'>+</button>               
                     </div>
                     <div className='w-full overflow-auto text-white'>
-                        <div className='w-[1225px]'>
+                        <div className='_md:w-[1225px]'>
                             <div className="flex flex-row p-4 py-5 text-base font-medium leading-5 text-left bg-transparent rounded-xl">
                                 <div className='flex flex-row w-1/4'>Name</div>
                                 <div className='w-1/4'>Type</div>

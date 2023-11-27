@@ -32,6 +32,11 @@ function AigentX () {
 
    const {signed, setSigned, barerToken, setBarerToken, groups, setGroups} = useContext(MyContext);
 
+   const handleDivClick = (groupIndex) => { 
+    localStorage.setItem('selectedGroup', groupIndex);
+    window.location.href = '/aigentx/editgroups';
+   };
+
    useEffect(() => {
     var tmp = [];
 
@@ -51,7 +56,7 @@ function AigentX () {
             {jsonObject[i].status == "incomplete" && <div className='w-1/3 text-left'><a className='bg-[#ED15221A] p-2 rounded-xl text-[#ED1522] font-medium'>Not Active</a></div>}
 
             <div className='flex flex-row items-center justify-end w-1/3 gap-3'>
-              <a href="/aigentx/editgroups"><img src="../img/edit_icon.png"></img></a>
+              <a><div onClick={() => handleDivClick(i)}><img src="../img/edit_icon.png"></img></div></a>
               {/* <img src="../img/edit_icon.png"></img> */}
               <img src="../img/delete_icon.png" onClick={() => setShowModal(1)} className='cursor-pointer'></img>
               {/* <FaEdit className='w-5 h-5 cursor-pointer hover:text-blue-500'/> */}
@@ -80,11 +85,11 @@ function AigentX () {
             </div>
         </div>) : null}
         <Navbar />
-        <div className='block super:hidden'>
+        <div className='block sm:hidden'>
           <Sidebar />
         </div>
         <div className='flex flex-row'>
-          <div className='hidden super:block'>
+          <div className='hidden sm:block'>
             <Leftbar />
           </div>
           <div className='flex items-start justify-center w-full px-3 body h-[100vh]'>
@@ -95,7 +100,7 @@ function AigentX () {
                 <div className='mt-10 mb-10 p-6 flex rounded-xl flex-col bg-[#FFFFFF0D] w-full'>
                   <div className='font-medium text-left text-white text-md lg:text-xl'>All bots</div>
                   <div className='w-full mt-6 overflow-auto text-white'>
-                    <div className='w-[1200px]'>
+                    <div className=''>
                       <div className="bg-[#232527] rounded-xl flex flex-row p-4 py-5">
                         <div className='flex flex-row justify-start w-1/2'>
                           {/* <CustomCheckBox /> */}
