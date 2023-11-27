@@ -15,8 +15,8 @@ export default function CustomBreadCrumb(props) {
     }, []);
 
     return (
-    <div className="flex flex-row items-center justify-start w-full gap-3 text-center cursor-pointer">
-        <FaHome className='w-4 h-4 text-[#FFFFFF66]'/><div className='text-transparent text-sm font-bold bg-gradient-to-r from-[#FFFFFF66] to-[#FFFFFF66] bg-clip-text'>Home</div>
+    <div className="flex flex-row items-center justify-start w-full text-center cursor-pointer">
+        <FaHome className='w-4 h-4 text-[#FFFFFF66] mr-2'/><div className='text-transparent text-sm font-bold bg-gradient-to-r from-[#FFFFFF66] to-[#FFFFFF66] bg-clip-text'>Home</div>
         {content}
     </div>
   )

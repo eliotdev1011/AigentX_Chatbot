@@ -39,23 +39,23 @@ function EditGroups () {
         <div 
             className = {`
                 ${i % 2 == 0 ? 'bg-[#FFFFFF0D]' : 'bg-transparent'}
-                rounded-xl flex flex-row p-4 py-5 hover:bg-[#393A4C]`}>
-            <div className='flex flex-row items-center justify-start w-1/5 gap-1'>
+                rounded-xl flex flex-row p-4 py-5 hover:bg-[#393A4C] font-medium leading-5 text-base`}>
+            <div className='flex flex-row items-center justify-start w-1/4 gap-1'>
                 {/* <CustomCheckBox /> */}
                 {tableData[i][0]}
             </div>
-            <div className='flex flex-row items-center justify-start w-1/5 gap-1'>
+            <div className='flex flex-row items-center justify-start w-1/4 gap-1'>
                 {tableData[i][1]}
             </div>
-            <div className='flex justify-start w-1/5'>
+            <div className='flex justify-start w-1/4'>
                 {tableData[i][2] == "Active" && (<a className='bg-[#52C41A1A] p-2 rounded-xl text-[#52C41A] font-medium'>Active</a>)}
                 {tableData[i][2] == "Setup" && (<a className='bg-[#FFE6621A] p-2 rounded-xl text-[#FFE662] font-medium'>Setup</a>)}
                 {(tableData[i][2] != "Setup" && tableData[i][2] != "Active" && tableData[i][2]) && (<a className='bg-[#FFFFFF1A] p-2 rounded-xl text-white font-medium'>{tableData[i][2]}</a>)}
             </div>
-            <div className='flex flex-row items-center justify-start w-1/5 gap-1'>
+            <div className='flex flex-row items-center justify-start w-1/6 gap-1'>
                 {tableData[i][3]}
             </div>
-            <div className='flex flex-row items-center justify-start w-1/5 gap-3'>
+            <div className='flex flex-row items-center justify-end gap-3'>
                 <FaEye className='w-4 h-4 cursor-pointer hover:text-green-500'/>
                 <a href="/aigentx/editknowledge"><img src="../img/edit_icon.png"></img></a>
                 <img src="../img/delete_icon.png" className='cursor-pointer'></img>
@@ -110,13 +110,13 @@ function EditGroups () {
                 <div className='mt-6 text-3xl font-medium text-white lg:text-4xl'>
                     Edit group
                 </div>
-                <div className='w-full bg-[#FFFFFF0D] rounded-xl p-8 mt-10'>
-                    <div className='flex flex-row items-center justify-start gap-2 p-1 py-2 font-medium text-white text-md rounded-xl'>
+                <div className='w-full bg-[#FFFFFF0D] rounded-xl p-6 mt-10'>
+                    <div className='flex flex-row items-center justify-start gap-2 p-1 py-2 text-xl font-medium leading-6 text-white rounded-xl'>
                         Ownership Verified
                         <img src="../img/check_icon.png"></img>
                         {/* <FaCheck /> */}
                     </div>
-                    <div className='grid grid-cols-1 gap-5 mt-8 lg:grid-cols-2'>
+                    <div className='grid grid-cols-1 gap-6 mt-8 lg:grid-cols-2'>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
                                 Company Informatino
@@ -147,7 +147,7 @@ function EditGroups () {
                                 Dex Tools Link
                                 <CustomSwitch checked = { false } disabled = { false }/>
                             </div>
-                            <textarea disabled rows="2" cols="15" name="text" placeholder = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea disabled rows="2" cols="15" name="text" value = "https://www.dextools.io/app/en/ether/pair-explorer/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-[#FFFFFF1A] bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
@@ -160,7 +160,7 @@ function EditGroups () {
                                 Dex Screener
                                 <CustomSwitch checked = { false } disabled = { false }/>
                             </div>
-                            <textarea disabled rows="2" cols="15" name="text" placeholder = "https://dexscreener.com/ethereum/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
+                            <textarea disabled rows="2" cols="15" name="text" value = "https://dexscreener.com/ethereum/0x3fdfd866fa9e1ab4b6f6762cbdce0bf787583dc3"  className='text-[#FFFFFF1A] bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                         <div className='flex flex-col text-white'>
                             <div className='flex justify-between mb-3'>
@@ -175,23 +175,23 @@ function EditGroups () {
                             <textarea rows="2" cols="15" name="text" placeholder = "Token utility and tokenomics"  className='text-white bg-transparent p-4 border border-[#747576] rounded-xl'></textarea>
                         </div>
                     </div>
-                    <div className='flex items-center justify-between px-4 py-2 mt-10 font-medium text-white rounded-xl'>
+                    <div className='flex items-center justify-between px-4 py-2 text-xl font-medium leading-6 text-white mt-9 rounded-xl'>
                         Knowledge Base Management
                         <button onClick={() => setShowModal(1)} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] rounded-xl py-1 px-3'>+</button>               
                     </div>
-                    <div className='w-full mt-10 overflow-auto text-white'>
-                        <div className='w-[1200px]'>
-                            <div className="flex flex-row p-4 py-5 text-left bg-transparent rounded-xl">
-                                <div className='flex flex-row w-1/5'>Name</div>
-                                <div className='w-1/5'>Type</div>
-                                <div className='w-1/5'>Status</div>
-                                <div className='w-1/5'>Size</div>
-                                <div className='w-1/5'>Action</div>
+                    <div className='w-full overflow-auto text-white'>
+                        <div className='w-[1225px]'>
+                            <div className="flex flex-row p-4 py-5 text-base font-medium leading-5 text-left bg-transparent rounded-xl">
+                                <div className='flex flex-row w-1/4'>Name</div>
+                                <div className='w-1/4'>Type</div>
+                                <div className='w-1/4'>Status</div>
+                                <div className='w-1/6'>Size</div>
+                                <div className='text-right'>Action</div>
                             </div>
                             {content}
                         </div>
                     </div>
-                    <div className='flex flex-row justify-center w-full gap-5 mt-10'>
+                    <div className='flex flex-row justify-end w-full gap-5 mt-10'>
                         <a href="/aigentx"><CustomButton size = "normal" buttonName = "Cancel" bgFrom = "from-[#3E4042]" bgTo = "to-[#3E4042]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" /></a>
                         <CustomButton size = "normal" buttonName = "Save" bgFrom = "from-[#ED23FF]" bgTo = "to-[#8E44FF]" bgDisable = "bg-opacity-10" leftIcon = "none" rightIcon = "none" />
                     </div>

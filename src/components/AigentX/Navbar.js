@@ -121,7 +121,7 @@ export default function Navbar() {
                     <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-between">
                         {/* 1 */}
                         <div className="relative items-center justify-center flex-shrink-0 hidden sm:flex">
-                            <a href="/"><img src = "../img/logo.png" className='cursor-pointer'></img></a>
+                            <a href="/"><img src = "../img/logo.png" className='cursor-pointer w-[116px] h-[32px]'></img></a>
                             {/* <input className='rounded-xl py-[6px] px-2 pl-8 bg-[#393A3C]' placeholder='Search'></input>
                             <FaSearch className='absolute w-[14px] h-[14px] text-[#88898A] -translate-y-1/2 top-1/2 left-2' /> */}
                         </div>
@@ -184,7 +184,7 @@ export default function Navbar() {
                                         {(() => {
                                             if (!connected) {
                                                 return (
-                                                    <button  onClick={openConnectModal} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] text-sm py-2 text-white px-5 rounded-xl flex flex-row items-center gap-2'><FaPlus className='w-3 h-3'/> Connect Wallet</button>
+                                                    <button  onClick={openConnectModal} className='bg-gradient-to-r from-[#ED23FF] to-[#8E44FF] text-sm py-3 text-white px-4 rounded-xl flex flex-row items-center gap-1 justify-center'><FaPlus className='w-3 h-3'/> Connect Wallet</button>
                                                 );
                                             }
 
