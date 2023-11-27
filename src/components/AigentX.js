@@ -8,10 +8,11 @@ import CustomPagination from './Pagination/CustomPagination';
 import CustomCheckBox from './CheckBoxs/CustomCheckBox';
 import Sidebar from './AigentX/Sidebar';
 import Leftbar from './AigentX/Leftbar';
+import MyContext from '../MyContext';
 
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 
@@ -29,11 +30,13 @@ function AigentX () {
    const [content, setContent] = useState([]);
    const [showModal, setShowModal] = useState(0);
 
+   const {signed, setSigned, barerToken, setBarerToken, groups, setGroups} = useContext(MyContext);
+
    useEffect(() => {
     var tmp = [];
-    
-    const jsonObject = JSON.parse(localStorage.getItem('groups'));
-    if(jsonObject != undefined && jsonObject != null){
+
+    if(groups != undefined && groups != null && groups != ""){
+      const jsonObject = JSON.parse(groups);
       for(let i = 0; i < jsonObject.length; i ++)
         tmp = [...tmp, (
           <div className={`hover:bg-[#FFFFFF0D] rounded-xl flex flex-row p-4 py-5 ${i % 2 == 0 ? 'bg-[#FFFFFF0D]' : 'bg-transparent'}`}>
@@ -59,7 +62,7 @@ function AigentX () {
       }
     
       setContent(tmp);
-   }, [localStorage.getItem('groups')]);
+   }, [groups]);
 
     return (
       <div className="App bg-[#17191B] body">
