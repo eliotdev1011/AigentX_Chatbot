@@ -29,33 +29,30 @@ export default function Navbar() {
 
     const {signed, setSigned, barerToken, setBarerToken, groups, setGroups} = useContext(MyContext);
 
-    if(!account.address) {
+    if(account.address == undefined || account.address == null) {
         setSigned(0);
         localStorage.setItem('signed', 0);
     }
     
-    console.log('----------------');
-    console.log(localStorage.getItem('signed'));
     if(account.address && signed == 0) {
         const timestamp = Date.now();
         let _timestamp = (timestamp / 1000).toFixed(0) - 200;
 
-        if(localStorage.getItem('signed') == null && localStorage.getItem('signed') == 0) {
-            alert("I verify my ownership to use AIgentX bot Timestamp:" + _timestamp);         
-            localStorage.setItem("signed", 1);
-        }
-        setSigned(1);
-
+        //Get barer token and save to useContext barerToken
         axios.post('https://eros-ai.cloud:2096/sign', { 
             wallet: account.address, 
             timestamp: _timestamp, 
             signature: "0x6783dc65a876be71598dbeeff0dd991bb061faf15a1b37fb3a7f4f9704b15804208f20143428859f9d5531bacb4acaeb7a5eaed6604a1ba2d8c9acb2e479d57c1b" 
         })
         .then((response) => {
-            console.log('-------token-------');
-            console.log(response.data.token);
-
             setBarerToken(response.data.token);
+            setSigned(1);
+
+            //Alert when connect wallet
+            if(localStorage.getItem('signed') == null || localStorage.getItem('signed') == 0) {
+                alert("I verify my ownership to use AIgentX bot Timestamp:" + _timestamp);         
+                localStorage.setItem("signed", 1);
+            }
         })
         .catch((error) => {
             console.error(error);
@@ -63,11 +60,8 @@ export default function Navbar() {
     }
 
     useEffect(() => {
-        console.log('-------------------------------telegram user name axios');
-        console.log(account.address);
-        console.log(barerToken);
-        console.log(tgUser);
-        if(account.address && barerToken != "" && tgUser == "") {    
+        //Fetch Tg username data and save to local tgUser
+        if(account.address && barerToken != "") {    
             const headers = {
                 // 'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2RhdGEiOnsid2FsbGV0IjoiMHhEZWFkOEQwRmVkMzU0YWM4OTFDODhDMmZlNjQ5MDIyMzVhRDE4MmZmIn0sImV4cCI6MTcwMTU0MTcyNiwiaWF0IjoxNzAwOTM2OTI2fQ.kLZD4KS976o_RjLocntoyMdqYV2tHFvLHg3Ft3bye-g",
                 'Authorization': 'Bearer ' + barerToken,
@@ -78,41 +72,38 @@ export default function Navbar() {
                 headers
             })
             .then((response) => {
-                console.log('-------Tg user-------');
-                console.log(response.data);
+                //Alert when wallet connect
                 if(response.data.username == null && tgUser == "") {
                     alert(account.address + 'Wallet is not connected to any telegram user');
                     setTgUser("Not connected");
                 }
-                setTgUser(response.data.username + '#' + response.data.user_id);
+                else
+                    setTgUser(response.data.username + '#' + response.data.user_id);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        }
+
+        //Fetch group data and save to useContext groups
+        if(account.address && barerToken != "") {
+            const headers = {
+                // 'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2RhdGEiOnsid2FsbGV0IjoiMHhEZWFkOEQwRmVkMzU0YWM4OTFDODhDMmZlNjQ5MDIyMzVhRDE4MmZmIn0sImV4cCI6MTcwMTU0MTcyNiwiaWF0IjoxNzAwOTM2OTI2fQ.kLZD4KS976o_RjLocntoyMdqYV2tHFvLHg3Ft3bye-g",
+                'Authorization': 'Bearer ' + barerToken,
+                'Content-Type': 'application/json',
+            };
+    
+            axios.get('https://eros-ai.cloud:2096/groups', { 
+                headers
+            })
+            .then((response) => {
+                setGroups(JSON.stringify(response.data.result));
             })
             .catch((error) => {
                 console.error(error);
             });
         }
     }, [barerToken]);
-
-    
-
-    if(account.address && groups == "" && barerToken != "") {
-        const headers = {
-            // 'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2RhdGEiOnsid2FsbGV0IjoiMHhEZWFkOEQwRmVkMzU0YWM4OTFDODhDMmZlNjQ5MDIyMzVhRDE4MmZmIn0sImV4cCI6MTcwMTU0MTcyNiwiaWF0IjoxNzAwOTM2OTI2fQ.kLZD4KS976o_RjLocntoyMdqYV2tHFvLHg3Ft3bye-g",
-            'Authorization': 'Bearer ' + barerToken,
-            'Content-Type': 'application/json',
-        };
-
-        axios.get('https://eros-ai.cloud:2096/groups', { 
-            headers
-        })
-        .then((response) => {
-            console.log('-------Groups-------');
-            console.log(response.data.result);
-            setGroups(JSON.stringify(response.data.result));
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-    }
 
   return (
     <div className='body'>
