@@ -32,6 +32,7 @@ const tableData = [
 function EditGroups () {
    const [content, setContent] = useState([]);
    const [showModal, setShowModal] = useState(0);
+   const [knowledgeData, setKnowledgeData] = useState([]);
 
    const {signed, setSigned, barerToken, setBarerToken, groups, setGroups} = useContext(MyContext);
 
@@ -49,8 +50,8 @@ function EditGroups () {
             headers
         })
         .then((response) => {
-            console.log('-------response-------');
-            console.log(response.data.result);
+            // console.log('-------response-------');
+            // console.log(response.data.result);
 
             document.getElementById("company_info").innerText = response.data.result.company_info;  
             document.getElementById("how_to_buy").innerText = response.data.result.how_to_buy; 
@@ -62,36 +63,51 @@ function EditGroups () {
         .catch((error) => {
             console.error(error);
         });
+
+        axios.get('https://eros-ai.cloud:2096/groups/' + currentObject.id + '/knowledgeBase', { 
+            headers
+        })
+        .then((response) => {
+            setKnowledgeData(response.data.result);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
     }
    }, [groups]);
+
+   const handleDivClick = (groupIndex) => { 
+    localStorage.setItem('selectedKnowledge', groupIndex);
+    window.location.href = '/aigentx/editknowledge';
+   };
 
    useEffect(() => {
     var tmp = [];
     
-    for(let i = 0; i < tableData.length; i ++)
+    for(let i = 0; i < knowledgeData.length; i ++)
       tmp = [...tmp, (
         <div 
             className = {`
                 ${i % 2 == 0 ? 'bg-[#FFFFFF0D]' : 'bg-transparent'}
                 rounded-xl flex flex-row p-4 py-5 hover:bg-[#393A4C] font-medium leading-5 text-base`}>
-            <div className='flex flex-row items-center justify-start w-1/4 gap-1'>
+            <div className='flex flex-row items-center justify-start w-1/4 gap-1 overflow-hidden'>
                 {/* <CustomCheckBox /> */}
-                {tableData[i][0]}
+                {knowledgeData[i].name}
             </div>
-            <div className='flex flex-row items-center justify-start w-1/4 gap-1'>
-                {tableData[i][1]}
+            <div className='flex flex-row items-center justify-start w-1/4 gap-1 ml-5'>
+                {knowledgeData[i].type}
             </div>
             <div className='flex justify-start w-1/4'>
-                {tableData[i][2] == "Active" && (<a className='bg-[#52C41A1A] p-2 rounded-xl text-[#52C41A] font-medium'>Active</a>)}
-                {tableData[i][2] == "Setup" && (<a className='bg-[#FFE6621A] p-2 rounded-xl text-[#FFE662] font-medium'>Setup</a>)}
-                {(tableData[i][2] != "Setup" && tableData[i][2] != "Active" && tableData[i][2]) && (<a className='bg-[#FFFFFF1A] p-2 rounded-xl text-white font-medium'>{tableData[i][2]}</a>)}
+                {knowledgeData[i].status == "active" && (<a className='bg-[#52C41A1A] p-2 rounded-xl text-[#52C41A] font-medium'>Active</a>)}
+                {/* {/* {knowledgeData[i].status == "setup" && (<a className='bg-[#FFE6621A] p-2 rounded-xl text-[#FFE662] font-medium'>Setup</a>)} */}
+                {/* {(knowledgeData[i].status != "setup" && tableData[i].status != "active" && tableData[i][2]) && (<a className='bg-[#FFFFFF1A] p-2 rounded-xl text-white font-medium'>{tableData[i][2]}</a>)} */}
             </div>
             <div className='flex flex-row items-center justify-start w-1/6 gap-1'>
-                {tableData[i][3]}
+                {knowledgeData[i].size}
             </div>
             <div className='flex flex-row items-center justify-end gap-3'>
                 <FaEye className='w-4 h-4 cursor-pointer hover:text-green-500'/>
-                <a href="/aigentx/editknowledge"><img src="../img/edit_icon.png"></img></a>
+                <div onClick={() => handleDivClick(i)}><a><img src="../img/edit_icon.png"></img></a></div>
                 <img src="../img/delete_icon.png" className='cursor-pointer'></img>
             
                 {/* <a href="/aigentx/editknowledge"><FaEdit className='w-5 h-5 cursor-pointer hover:text-blue-500'/></a>
@@ -101,7 +117,7 @@ function EditGroups () {
       )];
     
       setContent(tmp);
-   }, []);
+   }, [knowledgeData]);
 
     return (
       <div className="App bg-[#17191B] body">
@@ -217,7 +233,7 @@ function EditGroups () {
                         <div className='_md:w-[1225px]'>
                             <div className="flex flex-row p-4 py-5 text-base font-medium leading-5 text-left bg-transparent rounded-xl">
                                 <div className='flex flex-row w-1/4'>Name</div>
-                                <div className='w-1/4'>Type</div>
+                                <div className='w-1/4 ml-5'>Type</div>
                                 <div className='w-1/4'>Status</div>
                                 <div className='w-1/6'>Size</div>
                                 <div className='text-right'>Action</div>
