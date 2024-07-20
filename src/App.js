@@ -25,7 +25,7 @@ function App() {
     <MyProvider>
       <BrowserRouter>
         <Routes>
-          {/* <Route path='/webchat' element={<Landing />}></Route> */}
+          <Route path='/webchat' element={<Landing />}></Route>
           <Route path='/' element={<AigentX />}></Route>
           <Route path='/aigentx' element={<AigentX />}></Route>
           <Route path='/aigentx/editgroups' element={<EditGroups />}></Route>
